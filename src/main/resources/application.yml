@@ -17,6 +17,7 @@ spring:
         dialects: thymeleaf.extras.fragments.dialect.FragmentLayoutDialect
 
 jwt:
+    header: Authorization
     secret: VlwEyVBsYt9V7zq57TejMnVUyzblYcfPQye08f7MGVA9XkHa
-    tokenValidTime: 86400000
+    tokenValidTime: 86400
 
