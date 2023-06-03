@@ -1,0 +1,22 @@
+spring:
+    datasource:
+        driver-class-name: com.mysql.cj.jdbc.Driver
+        url: jdbc:mysql://localhost:3306/today_coding?
+        username: root
+        password: 1234abcd!
+    jpa:
+        hibernate:
+            ddl-auto: create
+    thymeleaf:
+        encoding: UTF-8
+        prefix: classpath:/templates/
+        cache: 'false'
+        suffix: .html
+        template-mode: LEGACYHTML5
+        mode: HTML
+        dialects: thymeleaf.extras.fragments.dialect.FragmentLayoutDialect
+
+jwt:
+    secret: VlwEyVBsYt9V7zq57TejMnVUyzblYcfPQye08f7MGVA9XkHa
+    tokenValidTime: 86400000
+
