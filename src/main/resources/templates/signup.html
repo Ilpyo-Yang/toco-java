@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layouts/layout_login}">
+
+    <head>
+        <script th:src="@{js/signup.js}"></script>
+    </head>
+
+    <div layout:fragment="content" class="content">
+        <div id="header" onclick="func_move('/')">
+            <img th:src="@{image/mascot.png}" class="pointer">
+            <span class="pointer">오늘의코딩</span>
+        </div>
+        <form id="form" th:action="@{/signup}" th:method="post">
+            <span class="login bold" onclick="func_move('/signup')">SignUp</span>
+            <input type="email" id="email" name="email" placeholder="example@google.com"/>
+            <input type="text" id="name" name="name" placeholder="이름"/>
+            <input type="password" id="password" name="password" placeholder="비밀번호"/>
+            <input type="password"  id="password_confirm" name="password_confirm" placeholder="비밀번호 확인"/>
+            <span id="warning"></span>
+            <button type="button" id="signup_btn" class="btn login_button">SignUp</button>
+            <span>소셜로 회원가입하기</span>
+            <button type="button" id="google_btn" class="btn btn-primary">
+                <img class="icon" th:src="@{image/icon/google.png}" />
+                Sign up With Google
+            </button>
+            <button type="button" id="kakao_btn" class="btn btn-warning">
+                <img class="icon" th:src="@{image/icon/kakao-talk.png}" />
+                Sign up With KakaoTalk
+            </button>
+            <span class="help">회원이신가요?
+                <span id="signup" class="bold pointer" onclick="func_move('login')">로그인하기</span>
+            </span>
+        </form>
+    </div>
+</html>

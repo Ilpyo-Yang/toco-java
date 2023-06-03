@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+    <footer th:fragment="footer_fragment">
+        <div class="container">
+            <div id="footer_title" class="bold">오늘의코딩</div>
+            <div id="footer_container">
+                <div id="footer_info">
+                    <span>개발자를 목표로 하거나 자기개발에 진심인 개발자들을 위한 오늘의 과제를 메일링해주는 서비스를 제공하고 있습니다.</span>
+                </div>
+                <div id="footer_menu">
+                    <span class="pointer" onclick="func_move('home')">** ABOUT</span>
+                    <span class="pointer" onclick="func_move('home')">** SERVICE</span>
+                    <span class="pointer" onclick="func_move('home')">** CONTACT</span>
+                    <span class="pointer" onclick="func_move('blog')">** BLOG</span>
+                    <span class="pointer" onclick="func_move('github')">** GITHUB</span>
+                    <span class="pointer">** CONTACT</span>
+                </div>
+            </div>
+            <div id="footer_copyright">
+                <span>Copyright @2023</span>
+                <span class="pointer bold" onclick="func_move('github')">Rosie Yang</span>
+            </div>
+        </div>
+    </footer>
+</html>

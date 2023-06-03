@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+    <header th:fragment="header_fragment">
+        <div id="header_container">
+            <div id="header_left" onclick="func_move('home')">
+                <img th:src="@{image/mascot.png}" class="pointer">
+                <span class="pointer">오늘의코딩</span>
+            </div>
+            <div id="header_middle"></div>
+            <div id="header_right">
+                <span class="pointer bold" onclick="func_move('login')">LOGIN</span>
+                <span class="pointer bold" onclick="func_move('logout')">LOGOUT</span>
+                <span class="break_line">|</span>
+                <span class="pointer bold" onclick="func_move('signup')">SignUp</span>
+                <span class="break_line">|</span>
+                <span class="pointer bold" onclick="func_move('mypage')">MY PAGE</span>
+            </div>
+        </div>
+    </header>
+</html>
