@@ -1,0 +1,74 @@
+body{
+    font-family: "NanumR";
+    background-color: #f29c20;
+}
+/* 로고 */
+#header{
+    font-size: 1.2em;
+    text-align: left;
+}
+#header > img{
+    width: 1.5vw;
+    min-width: 20px;
+    display: inline-block;
+}
+#header > span{
+    font-weight: bold;
+    color: #965ca5;
+}
+/* 로그인 창 */
+.content{
+    background-color: white;
+    font-size: 1vw;
+    padding: 2vw !important;
+    min-width: 300px;
+    width: 30vw;
+    margin: 20vh auto;
+    border-radius: 2%;
+    box-shadow: 2px 2px 2px 2px #d25726;
+    text-align: center;
+}
+form > span, form > button, form > input {
+    display: block;
+    width: 100%;
+    margin: 0.3vw 0;
+}
+form > input{
+    border: 0;
+    border-bottom: 1px solid #e78324;
+}
+button{
+    text-align: left !important;
+}
+.icon{
+    height: 1vh;
+    margin-right: 0.5vw;
+}
+.login{
+    font-size: 3vh;
+    color: #e78324;
+    margin-bottom: 2vw;
+}
+.btn{
+    font-size: 0.7em;
+    max-height: 55px;
+}
+.login_button{
+    color: white;
+    margin-top: 1.5vw;
+    margin-bottom: 2vw;
+    background-color: #e78324;
+    text-align: center !important;
+}
+.help{
+    margin-top: 2.5vw;
+}
+#signup{
+    margin-left: 1vw;
+    color: #e78324;
+}
+#warning{
+    color: red;
+    margin-top: 1vh;
+    text-align: left;
+}

@@ -1,0 +1,38 @@
+header{
+    max-height: 10vh;
+    margin-top: 1vw;
+}
+#header_container{
+    margin: 0 20vw;
+    disply: grid;
+}
+#header_container > div{
+    display: inline-block;
+}
+
+/* 헤더 왼쪽 */
+#header_left{
+    font-size: 1.2em;
+    text-align: left;
+}
+#header_left > img{
+    width: 1.5vw;
+    min-width: 20px;
+    display: inline-block;
+}
+#header_left > span{
+    font-weight: bold;
+    color: #965ca5;
+}
+
+/* 헤더 중간 */
+#header_middle{
+
+}
+
+/* 헤더 오른쪽 */
+#header_right{
+    font-size: 0.7em;
+    text-align: right;
+    float: right;
+}

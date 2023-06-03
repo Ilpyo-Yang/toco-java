@@ -1,0 +1,10 @@
+.service_container{
+    display: grid;
+    grid-template-rows:1fr;
+    margin: 0 2vw;
+}
+.filter_menu{
+    background-color: #f29c20;
+    /*line-height: 3em;*/
+    padding: 0 0.5em;
+}

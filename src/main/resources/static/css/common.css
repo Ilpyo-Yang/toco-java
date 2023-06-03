@@ -1,0 +1,13 @@
+.pointer{
+    cursor: pointer;
+}
+.bold{
+    font-weight: bolder;
+}
+.break_line{
+    margin: 0 1vw;
+    font-weight: bolder;
+}
+.right{
+    float: right;
+}

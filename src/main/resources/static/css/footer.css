@@ -1,0 +1,36 @@
+footer{
+    background-color: #f29c20;
+    position: absolute;
+}
+footer > .container{
+    margin: 0 20vw;
+    padding: 1vw 0;
+}
+#footer_title{
+    font-size: 1.1em;
+}
+#footer_container{
+    margin-top: 0.5vw;
+}
+#footer_info{
+    width: 60vw;
+    font-size: 0.7em;
+    text-align: left;
+}
+#footer_introduction > span{
+}
+#footer_menu{
+    max-width: 60vw;
+    flex-wrap: wrap;
+}
+#footer_menu > span{
+    font-size: 0.7em;
+    margin: 1vh 1vw 0 0;
+    color: white;
+    flex-basis: 5vw;
+}
+#footer_copyright{
+    font-size: 0.5em;
+    margin-top: 2vh;
+    text-align: right;
+}
