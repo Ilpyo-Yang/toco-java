@@ -30,8 +30,11 @@ body{
     width: 60%;
 }
 #greetings{
-    margin: 30px 0;
+    margin: 3rem 0;
     text-align: left;
+}
+#greetings > span{
+    margin-left: 0.5rem;
 }
 #greetings > img{
     display: block;
