@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org"
       xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
-      layout:decorate="~{layouts/layout_login}">
+      layout:decorate="~{layouts/layout}">
 
     <head>
         <script th:src="@{js/signup.js}"></script>
@@ -10,7 +10,6 @@
     <div layout:fragment="content" class="content">
         <div id="header" onclick="func_move('/')">
             <img th:src="@{image/mascot.png}" class="pointer">
-            <span class="pointer">오늘의코딩</span>
         </div>
         <form id="form" th:action="@{/signup}" th:method="post">
             <span class="login bold" onclick="func_move('/signup')">SignUp</span>

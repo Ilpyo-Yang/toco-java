@@ -4,12 +4,24 @@
       xmlns:th="http://www.thymeleaf.org"
       xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
 
-    <head th:replace="~{fragments/head :: head_fragment}"></head>
+    <head th:fragment="head_fragment">
+        <base href="/">
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,member-scalable=no">
+        <title>오늘의코딩</title>
+
+        <link rel="stylesheet" th:href="@{css/bootstrap.min.css}">
+        <link rel="stylesheet" th:href="@{css/default.css}">
+        <link rel="stylesheet" th:href="@{css/common.css}">
+
+        <script th:src="@{js/bootstrap.min.js}"></script>
+        <script th:src="@{js/common.js}"></script>
+
+        <link rel="shortcut icon" type="image/x-icon" th:href="@{image/favicon/toco.ico}" />
+    </head>
 
     <body>
-        <header th:replace="~{fragments/header :: header_fragment}"></header>
         <div layout:fragment="content"></div>
-        <footer th:replace="~{fragments/footer :: footer_fragment}"></footer>
     </body>
 
     <script th:inline="javascript">

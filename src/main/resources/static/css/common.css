@@ -11,3 +11,14 @@
 .right{
     float: right;
 }
+
+/* 로고 */
+.logo{
+    width: 40px;
+}
+
+/* header */
+.header{
+    background-image: url("");
+}
+

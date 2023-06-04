@@ -1,16 +1,16 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org"
       xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
-      layout:decorate="~{layouts/layout_login}">
+      layout:decorate="~{layouts/layout}">
 
     <head>
+        <link rel="stylesheet" th:href="@{css/login.css}">
         <script th:src="@{js/login.js}"></script>
     </head>
 
     <div layout:fragment="content" class="content">
         <div id="header" onclick="func_move('/')">
-            <img th:src="@{image/mascot.png}" class="pointer">
-            <span class="pointer">오늘의코딩</span>
+            <img th:src="@{image/toco-orange.png}" class="pointer logo">
         </div>
         <form id="form" th:action="@{/login}" th:method="post">
             <span class="login bold" onclick="func_move('/login')">Login</span>
@@ -18,7 +18,7 @@
             <input type="password" id="password" name="password" placeholder="********"/>
             <button type="button" id="login_btn" class="btn login_button">Login</button>
             <span>소셜 로그인하기</span>
-            <span id="warning"></span>
+            <span class="warning"></span>
             <button type="button" class="btn btn-primary">
                 <img class="icon" th:src="@{image/icon/google.png}" />
                 Sign in With Google

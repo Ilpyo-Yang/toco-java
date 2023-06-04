@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+
+<html lan="ko"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+
+    <head th:replace="~{fragments/head :: head_fragment}"></head>
+
+    <body>
+        <header th:replace="~{fragments/header :: header_fragment}"></header>
+        <div layout:fragment="content"></div>
+        <footer th:replace="~{fragments/footer :: footer_fragment}"></footer>
+    </body>
+
+    <script th:inline="javascript">
+        if ([[${result}]]) { alert([[${result}]]); }
+    </script>
+</html>
