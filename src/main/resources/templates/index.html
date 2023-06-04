@@ -9,19 +9,20 @@
     </head>
 
     <div layout:fragment="content" class="content">
-        <div layout:fragment="header" class="header">
-            <img th:src="@{image/toco.png}" class="logo">
+        <div class="header">
+            <img class="logo left" th:src="@{image/toco-orange.png}">
 
             <span class="pointer right">MYPAGE</span>
             <span class="pointer right" onclick="func_move('login')">LOGIN</span>
-
-            <div id="greetings">
-                <span>다시 만나서 반가워요 :)</span><br>
-                <span class="bold">Hello Rose!</span>
-            </div>
+        </div>
+        <div id="greetings">
+            <span>다시 만나서 반가워요 :)</span><br>
+            <span class="bold">Hello Rose!</span>
             <img id="header-background" th:src="@{image/header-background.png}">
         </div>
-        <div>
+        <div id="programs">
+            <span>프로그램 선택</span>
+            <br>
             <select>
                 <option>aaaaaaaaaaaaaaaaa</option>
                 <option>aaaaaaaaaaaaaaaaa</option>
@@ -30,7 +31,7 @@
             </select>
             <button>REGISTER</button>
             <div>
-                <span>details</span>
+                <span class="pointer right">details</span>
                 <img src=""/>
             </div>
         </div>

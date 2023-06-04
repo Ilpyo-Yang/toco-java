@@ -8,13 +8,16 @@
     margin: 0 1vw;
     font-weight: bolder;
 }
+.left{
+    float: left;
+}
 .right{
     float: right;
 }
 
 /* 로고 */
 .logo{
-    width: 40px;
+    width: 3rem;
 }
 
 /* header */
