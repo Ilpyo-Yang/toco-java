@@ -15,6 +15,15 @@ spring:
         template-mode: LEGACYHTML5
         mode: HTML
         dialects: thymeleaf.extras.fragments.dialect.FragmentLayoutDialect
+    devtools:
+        livereload:
+            enabled: true
+        restart:
+            enabled: true
+        freemarker:
+            cache: false
+        thymeleaf:
+            cache: false
 
 jwt:
     header: Authorization

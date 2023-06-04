@@ -11,10 +11,15 @@
     <div layout:fragment="content" class="content">
         <div layout:fragment="header" class="header">
             <img th:src="@{image/toco.png}" class="logo">
-            <span class="pointer" onclick="func_move('login')">LOGIN</span>
-            <span class="pointer">MYPAGE</span>
-            <span>다시 만나서 반가워요 :)</span>
-            <span>Hello Rosie!</span>
+
+            <span class="pointer right">MYPAGE</span>
+            <span class="pointer right" onclick="func_move('login')">LOGIN</span>
+
+            <div id="greetings">
+                <span>다시 만나서 반가워요 :)</span><br>
+                <span class="bold">Hello Rose!</span>
+            </div>
+            <img id="header-background" th:src="@{image/header-background.png}">
         </div>
         <div>
             <select>
