@@ -6,7 +6,7 @@ import org.springframework.web.bind.annotation.*;
 
 @Controller
 @RequiredArgsConstructor
-public class LogController {
+public class MemberController {
 
     @GetMapping("/login")
     public String login(){
@@ -17,4 +17,5 @@ public class LogController {
     public String logout(){
         return "/";
     }
+
 }
