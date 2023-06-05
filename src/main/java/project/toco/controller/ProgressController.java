@@ -2,12 +2,12 @@ package project.toco.controller;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
-import project.toco.service.MemberService;
+import project.toco.service.ProgressService;
 
 @Controller
 @RequiredArgsConstructor
-public class MemberController {
-    private final MemberService memberService;
+public class ProgressController {
+    private final ProgressService progressService;
 
 
 
