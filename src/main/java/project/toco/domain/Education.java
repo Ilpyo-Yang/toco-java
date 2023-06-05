@@ -3,6 +3,8 @@ package project.toco.domain;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Enumerated;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.OneToMany;
 import java.util.ArrayList;
@@ -17,9 +19,10 @@ import lombok.Setter;
 @NoArgsConstructor
 public class Education {
   @Id
+  @GeneratedValue(strategy = GenerationType.UUID)
   String uuid;
   String name;
-  String explain;
+  String intro;
   int students;
   int period;
   @Enumerated

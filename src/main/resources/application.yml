@@ -6,7 +6,7 @@ spring:
         password: 1234abcd!
     jpa:
         hibernate:
-            ddl-auto: create
+            ddl-auto: update
     thymeleaf:
         encoding: UTF-8
         prefix: classpath:/templates/
