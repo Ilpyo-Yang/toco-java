@@ -1,4 +1,4 @@
-package project.toco.domain;
+package project.toco.entity;
 
 import java.util.Arrays;
 import java.util.List;

@@ -1,5 +1,6 @@
-package project.toco.domain;
+package project.toco.entity;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
@@ -16,14 +17,26 @@ import lombok.Setter;
 @Getter
 @Setter
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
-public class EducationContents {
+public class Progress extends BaseEntity {
   @Id
   @GeneratedValue(strategy = GenerationType.UUID)
-  String uuid;
-  String name;
-  String details;
+  @Column(name="progress_id")
+  private String uuid;
+  private String name;
+
+  @ManyToOne(fetch = FetchType.LAZY)
+  @JoinColumn(name="member_uuid")
+  private Member member;
 
   @ManyToOne(fetch = FetchType.LAZY)
   @JoinColumn(name="education_uuid")
-  Education education;
+  private Education education;
+
+  public static Progress createProgress(String name, Member member, Education education){
+    Progress progress = new Progress();
+    progress.setName(name);
+    progress.setMember(member);
+    progress.setEducation(education);
+    return progress;
+  }
 }

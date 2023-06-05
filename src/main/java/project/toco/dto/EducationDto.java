@@ -1,18 +1,23 @@
 package project.toco.dto;
 
+import java.time.LocalDateTime;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-import project.toco.domain.EducationType;
+import project.toco.entity.EducationType;
 
 @Getter
 @Setter
 @NoArgsConstructor
 public class EducationDto {
-  String uuid;
-  String name;
-  String intro;
-  int students;
-  int period;
-  EducationType type;
+  private String uuid;
+  private String name;
+  private String intro;
+  private int students;
+  private int period;
+  private EducationType type;
+  private String createdBy;
+  private String lastModifiedBy;
+  private LocalDateTime createdDate;
+  private LocalDateTime lastModifiedDate;
 }

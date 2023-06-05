@@ -1,5 +1,6 @@
 package project.toco.dto;
 
+import java.time.LocalDateTime;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -8,6 +9,10 @@ import lombok.Setter;
 @Setter
 @NoArgsConstructor
 public class ProgressDto {
-  String uuid;
-  String name;
+  private String uuid;
+  private String name;
+  private String createdBy;
+  private String lastModifiedBy;
+  private LocalDateTime createdDate;
+  private LocalDateTime lastModifiedDate;
 }
