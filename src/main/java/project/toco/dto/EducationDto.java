@@ -8,7 +8,7 @@ import project.toco.domain.EducationType;
 @Getter
 @Setter
 @NoArgsConstructor
-public class Education {
+public class EducationDto {
   String uuid;
   String name;
   String intro;

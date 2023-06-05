@@ -7,7 +7,8 @@ import lombok.Setter;
 @Getter
 @Setter
 @NoArgsConstructor
-public class Progress {
+public class EducationContentsDto {
   String uuid;
   String name;
+  String details;
 }

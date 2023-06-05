@@ -7,7 +7,7 @@ import lombok.Setter;
 @Getter
 @Setter
 @NoArgsConstructor
-public class Member {
+public class MemberDto {
   String uuid;
   String name;
   String email;
