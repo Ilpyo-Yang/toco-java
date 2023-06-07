@@ -22,7 +22,7 @@ import lombok.Setter;
 public class Member extends BaseTimeEntity {
   @Id
   @GeneratedValue(strategy = GenerationType.UUID)
-  @Column(name="member_id")
+  @Column(name="member_uuid")
   private String uuid;
   private String name;
   @Column(unique = true)

@@ -1,6 +1,5 @@
 package project.toco.dto;
 
-import java.time.LocalDateTime;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -8,12 +7,10 @@ import lombok.Setter;
 @Getter
 @Setter
 @NoArgsConstructor
-public class EducationContentsDto {
+public class EducationContentDto {
   private String uuid;
+  private int chapter;
   private String name;
   private String details;
-  private String createdBy;
-  private String lastModifiedBy;
-  private LocalDateTime createdDate;
-  private LocalDateTime lastModifiedDate;
+  private String education_uuid;
 }

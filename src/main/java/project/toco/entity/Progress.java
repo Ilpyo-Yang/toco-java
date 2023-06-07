@@ -20,23 +20,23 @@ import lombok.Setter;
 public class Progress extends BaseEntity {
   @Id
   @GeneratedValue(strategy = GenerationType.UUID)
-  @Column(name="progress_id")
+  @Column(name="progress_uuid")
   private String uuid;
-  private String name;
+  private Status status;
 
   @ManyToOne(fetch = FetchType.LAZY)
   @JoinColumn(name="member_uuid")
   private Member member;
 
   @ManyToOne(fetch = FetchType.LAZY)
-  @JoinColumn(name="education_uuid")
-  private Education education;
+  @JoinColumn(name="education_content_uuid")
+  private EducationContent education_content;
 
-  public static Progress createProgress(String name, Member member, Education education){
+  public static Progress createProgress(Status status, Member member, EducationContent educationContent){
     Progress progress = new Progress();
-    progress.setName(name);
+    progress.setStatus(status);
     progress.setMember(member);
-    progress.setEducation(education);
+    progress.setEducation_content(educationContent);
     return progress;
   }
 }

@@ -20,10 +20,10 @@ import lombok.Setter;
 @Getter
 @Setter
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
-public class Education extends BaseEntity {
+public class Education extends BaseTimeEntity {
   @Id
   @GeneratedValue(strategy = GenerationType.UUID)
-  @Column(name="education_id")
+  @Column(name="education_uuid")
   private String uuid;
   private String name;
   private String intro;
@@ -34,33 +34,20 @@ public class Education extends BaseEntity {
 
   @JsonIgnore
   @OneToMany(mappedBy = "education", cascade = CascadeType.ALL)
-  private List<Progress> progresses = new ArrayList<>();
-
-  @JsonIgnore
-  @OneToMany(mappedBy = "education", cascade = CascadeType.ALL)
   private List<EducationContent> educationContents = new ArrayList<>();
-
-  public void addProgress(Progress progress) {
-    progresses.add(progress);
-    progress.setEducation(this);
-  }
 
   public void addEducationContents(EducationContent educationContent) {
     educationContents.add(educationContent);
     educationContent.setEducation(this);
   }
 
-  public static Education createEducation(String name, String intro, int students, int period, EducationType type,
-                                          List<Progress> progresses, List<EducationContent> educationContents){
+  public static Education createEducation(String name, String intro, int students, int period, EducationType type, List<EducationContent> educationContents){
     Education education = new Education();
     education.setName(name);
     education.setIntro(intro);
     education.setStudents(students);
     education.setPeriod(period);
     education.setType(type);
-    for(Progress progress : progresses){
-      education.addProgress(progress);
-    }
     for(EducationContent educationContent : educationContents){
       education.addEducationContents(educationContent);
     }
