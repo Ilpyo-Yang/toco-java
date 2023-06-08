@@ -1,6 +1,7 @@
 package project.toco.entity;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import groovyjarjarantlr4.v4.runtime.misc.NotNull;
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -24,10 +25,13 @@ public class Member extends BaseTimeEntity {
   @GeneratedValue(strategy = GenerationType.UUID)
   @Column(name="member_uuid")
   private String uuid;
+  @NotNull
   private String name;
   @Column(unique = true)
   private String email;
+  @NotNull
   private String password;
+  @NotNull
   private String role;
 
   @JsonIgnore

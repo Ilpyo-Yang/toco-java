@@ -1,24 +1,41 @@
 package project.toco.entity;
 
-import java.util.Arrays;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import groovyjarjarantlr4.v4.runtime.misc.NotNull;
+import jakarta.persistence.CascadeType;
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
+import java.util.ArrayList;
 import java.util.List;
+import lombok.AccessLevel;
 import lombok.Getter;
-import lombok.ToString;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
+@Entity
 @Getter
-@ToString
-public enum EducationType {
-  CS("CS", Arrays.asList("CS","Architecture","Algorithm"))
-  ,Backend("백엔드", Arrays.asList("Java","Python","Kotlin","C#"))
-  ,Frontend("프론트엔드", Arrays.asList("JS","React","Typescript"))
-  ,Devops("데브옵스", Arrays.asList("Network","AWS"))
-  ,Tool("툴", Arrays.asList("GitHub","IntelliJ"));
+@Setter
+@NoArgsConstructor(access = AccessLevel.PROTECTED)
+public class EducationType {
+  @Id
+  @GeneratedValue(strategy = GenerationType.UUID)
+  @Column(name="type_uuid")
+  private String uuid;
+  @NotNull
+  private String main;
+  @NotNull
+  private String sub;
 
-  private final String name;
-  private final List<String> list;
-
-  EducationType(String name, List<String> list) {
-    this.name = name;
-    this.list = list;
+  public static EducationType createEducationType(String main, String sub){
+    EducationType educationType = new EducationType();
+    educationType.setMain(main);
+    educationType.setSub(sub);
+    return educationType;
   }
 }
