@@ -2,9 +2,10 @@ package project.toco.repository;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
-import project.toco.domain.Education;
+import project.toco.entity.Education;
+import project.toco.repository.custom.EducationRepositoryCustom;
 
 @Repository
-public interface EducationRepository extends JpaRepository<Education, String> {
+public interface EducationRepository extends JpaRepository<Education, String>, EducationRepositoryCustom {
 
 }

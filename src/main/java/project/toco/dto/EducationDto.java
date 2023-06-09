@@ -15,7 +15,7 @@ public class EducationDto {
   private String intro;
   private int students;
   private int period;
-  private EducationType type;
+  private String type;
   private LocalDateTime createdDate;
   private LocalDateTime lastModifiedDate;
 }

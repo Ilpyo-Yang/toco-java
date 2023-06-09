@@ -4,9 +4,11 @@ spring:
         url: jdbc:mysql://localhost:3306/today_coding?
         username: root
         password: 1234abcd!
+
     jpa:
         hibernate:
             ddl-auto: update
+
     thymeleaf:
         encoding: UTF-8
         prefix: classpath:/templates/
@@ -15,6 +17,7 @@ spring:
         template-mode: LEGACYHTML5
         mode: HTML
         dialects: thymeleaf.extras.fragments.dialect.FragmentLayoutDialect
+
     devtools:
         livereload:
             enabled: true
