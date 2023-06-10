@@ -9,16 +9,13 @@ import project.toco.dto.EducationContentDto;
 import project.toco.dto.EducationDto;
 import project.toco.entity.Education;
 import project.toco.entity.EducationContent;
-import project.toco.entity.EducationType;
 import project.toco.repository.EducationRepository;
-import project.toco.repository.EducationTypeRepository;
 
 @Service
 @Transactional(readOnly = true)
 @RequiredArgsConstructor
 public class EducationService {
   private final EducationRepository educationRepository;
-  private final EducationTypeRepository educationTypeRepository;
 
   public Education findById(String uuid){
     return educationRepository.findById(uuid).get();

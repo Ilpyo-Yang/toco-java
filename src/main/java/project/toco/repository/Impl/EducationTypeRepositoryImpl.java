@@ -7,10 +7,10 @@ import com.querydsl.jpa.impl.JPAQueryFactory;
 import java.util.List;
 import lombok.RequiredArgsConstructor;
 import project.toco.dto.EducationTypeDto;
-import project.toco.repository.custom.EducationRepositoryCustom;
+import project.toco.repository.custom.EducationTypeCustom;
 
 @RequiredArgsConstructor
-public class EducationRepositoryTypeRepositoryImpl implements EducationRepositoryCustom {
+public class EducationTypeRepositoryImpl implements EducationTypeCustom {
   private final JPAQueryFactory jpaQueryFactory;
 
   @Override
