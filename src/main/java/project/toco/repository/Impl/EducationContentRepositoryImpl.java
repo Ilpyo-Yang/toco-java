@@ -1,15 +1,15 @@
 package project.toco.repository.Impl;
 
-import static org.springframework.util.StringUtils.hasText;
 import static project.toco.entity.QEducationContent.educationContent;
-import static project.toco.entity.QMember.member;
 
 import com.querydsl.core.types.dsl.BooleanExpression;
 import com.querydsl.jpa.impl.JPAQueryFactory;
 import lombok.RequiredArgsConstructor;
+import org.springframework.stereotype.Repository;
 import project.toco.entity.Education;
 import project.toco.repository.custom.EducationContentCustom;
 
+@Repository
 @RequiredArgsConstructor
 public class EducationContentRepositoryImpl implements EducationContentCustom {
   private final JPAQueryFactory jpaQueryFactory;

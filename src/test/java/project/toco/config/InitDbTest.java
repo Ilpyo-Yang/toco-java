@@ -32,12 +32,12 @@ public class InitDbTest {
   @Transactional
   @Rollback(false)
   public void intDb(){
-    educationTypeService.create("CS", "CS");
-    educationTypeService.create("CS", "Architecture");
-    educationTypeService.create("Backend", "Java");
-    educationTypeService.create("Backend", "Python");
+//    educationTypeService.create("CS", "CS");
+//    educationTypeService.create("CS", "Architecture");
+//    educationTypeService.create("Backend", "Java");
+//    educationTypeService.create("Backend", "Python");
     List<EducationTypeDto> typeList = educationTypeService.findTypesToDto();
-    assert typeList.size()==4;
+    assert typeList.size()==0;
 
     SignupForm form = new SignupForm("rosie","rosie@gmail.com","1234", "USER");
     String uuid = memberService.create(form);

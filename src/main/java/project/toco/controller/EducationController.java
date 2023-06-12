@@ -8,7 +8,4 @@ import project.toco.service.ProgressService;
 @RequiredArgsConstructor
 public class EducationController {
     private final ProgressService progressService;
-
-
-
 }

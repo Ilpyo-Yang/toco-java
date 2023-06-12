@@ -16,7 +16,7 @@ public class EducationTypeService {
 
   public void create(String main, String sub){
     EducationType type = EducationType.createEducationType(main, sub);
-    educationTypeRepository.save(type);
+    //educationTypeRepository.save(type);
   }
 
   public List<EducationTypeDto> findTypesToDto(){

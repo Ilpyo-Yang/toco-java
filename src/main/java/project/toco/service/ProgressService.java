@@ -4,8 +4,6 @@ import java.util.List;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-import project.toco.dto.ProgressDto;
-import project.toco.entity.Education;
 import project.toco.entity.EducationContent;
 import project.toco.entity.Member;
 import project.toco.entity.Progress;

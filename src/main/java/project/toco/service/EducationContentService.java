@@ -5,7 +5,6 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import project.toco.entity.Education;
 import project.toco.entity.EducationContent;
-import project.toco.entity.EducationType;
 import project.toco.repository.EducationContentRepository;
 
 @Service
