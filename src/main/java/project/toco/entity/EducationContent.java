@@ -1,7 +1,6 @@
 package project.toco.entity;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import groovyjarjarantlr4.v4.runtime.misc.NotNull;
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -28,11 +27,8 @@ public class EducationContent {
   @GeneratedValue(strategy = GenerationType.UUID)
   @Column(name="education_content_uuid")
   private String uuid;
-  @NotNull
   private int chapter;
-  @NotNull
   private String name;
-  @NotNull
   private String details;
 
   @ManyToOne(fetch = FetchType.LAZY)

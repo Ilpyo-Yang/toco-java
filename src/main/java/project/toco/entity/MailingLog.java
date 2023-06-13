@@ -1,6 +1,5 @@
 package project.toco.entity;
 
-import groovyjarjarantlr4.v4.runtime.misc.NotNull;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -22,9 +21,7 @@ public class MailingLog {
   @GeneratedValue(strategy = GenerationType.UUID)
   @Column(name="mailing_log_uuid")
   private String uuid;
-  @NotNull
   private String receiver;
-  @NotNull
   private String history;
   @CreatedDate
   private LocalDateTime sentDate;

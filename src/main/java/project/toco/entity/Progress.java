@@ -1,6 +1,5 @@
 package project.toco.entity;
 
-import groovyjarjarantlr4.v4.runtime.misc.NotNull;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;
@@ -14,6 +13,7 @@ import jakarta.persistence.ManyToOne;
 import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.NonNull;
 import lombok.Setter;
 
 @Entity
@@ -25,7 +25,7 @@ public class Progress extends BaseEntity {
   @GeneratedValue(strategy = GenerationType.UUID)
   @Column(name="progress_uuid")
   private String uuid;
-  @NotNull
+
   @Enumerated(EnumType.STRING)
   private Status status;
 

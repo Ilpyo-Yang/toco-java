@@ -7,9 +7,8 @@ import lombok.Setter;
 @Getter
 @Setter
 @AllArgsConstructor
-public class SignupForm {
+public class CreateEducationContentForm {
   private String name;
-  private String email;
-  private String password;
-  private String role;
+  private String intro;
+  private String type;
 }
