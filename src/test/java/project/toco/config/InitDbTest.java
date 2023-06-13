@@ -63,7 +63,6 @@ public class InitDbTest {
 
   @Test
   public void intProgressDb(){
-    List<EducationTypeDto> typeList = educationTypeService.findTypesToDto();
     Member member = memberService.findAll().get(0);
     Education education = educationService.findAll().get(0);
 
