@@ -1,22 +1,17 @@
-body{
-    font-family: "NanumR";
-    background-color: #f29c20;
-}
-/* 로고 */
-#header{
-    font-size: 1.2em;
+.content{
     text-align: left;
+    padding-bottom: 2vh !important;
 }
-#header > img{
-    width: 1.5vw;
-    min-width: 20px;
-    display: inline-block;
+.row{
+    width: 80%;
+    margin: 2vh auto 5vh auto;
 }
-#header > span{
-    font-weight: bold;
-    color: #965ca5;
+.row > .col{
+    padding: 0 2vw;
 }
-
+form{
+    margin-top: 5vh;
+}
 form > span, form > button, form > input {
     display: block;
     width: 100%;
@@ -25,39 +20,43 @@ form > span, form > button, form > input {
 form > input{
     border: 0;
     border-bottom: 1px solid #e78324;
+    line-height: 2rem;
 }
-button{
+.btn{
     text-align: left !important;
+    display: block;
+    margin-top: 1vh;
+    width: 100%;
+    line-height: 3vh;
 }
 .icon{
-    height: 1vh;
+    height: 2vh;
     margin-right: 0.5vw;
 }
 .login{
-    font-size: 3vh;
-    color: #e78324;
+    text-align: center;
+    font-size: 2rem;
     margin-bottom: 2vw;
 }
-.btn{
-    font-size: 0.7em;
-    max-height: 55px;
-}
-.login_button{
+.login_btn{
     color: white;
     margin-top: 1.5vw;
     margin-bottom: 2vw;
     background-color: #e78324;
     text-align: center !important;
 }
-.help{
-    margin-top: 2.5vw;
-}
-#signup{
-    margin-left: 1vw;
-    color: #e78324;
-}
 #warning{
     color: red;
     margin-top: 1vh;
     text-align: left;
+}
+.col > img{
+    margin: 5vh 0;
+}
+.help{
+    margin: 2.5vw 0 0 2vw;
+}
+#signup{
+    margin-left: 1vw;
+    color: #e78324;
 }

@@ -10,7 +10,7 @@
 
     <div layout:fragment="content" class="content">
         <div class="header">
-            <img class="logo left" th:src="@{image/toco-orange.png}">
+            <img class="pointer logo left" onclick="func_move('/')" th:src="@{image/toco-orange.png}">
 
             <span class="pointer right">MYPAGE</span>
             <span class="pointer right" onclick="func_move('login')">LOGIN</span>
@@ -22,7 +22,7 @@
                 <div class="greetings">
                     <span>다시 만나서 반가워요, </span>
                     <span class="bold">Rosie :)</span>
-                    <img th:src="@{image/header-background.png}">
+                    <img th:src="@{image/illust/build-up.svg}">
                 </div>
             </div>
             <div class="col-7">
