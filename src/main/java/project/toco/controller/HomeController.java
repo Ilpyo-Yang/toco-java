@@ -16,4 +16,9 @@ public class HomeController {
         educationService.findAll();
         return "index";
     }
+
+    @GetMapping(value = {"/info"})
+    public String info(){
+        return "info";
+    }
 }

@@ -4,23 +4,23 @@
       layout:decorate="~{layouts/layout}">
 
     <head>
-        <link rel="stylesheet" th:href="@{css/index.css}">
-        <script th:src="@{js/index.js}"></script>
+        <link rel="stylesheet" th:href="@{css/info.css}">
+        <script th:src="@{js/info.js}"></script>
     </head>
 
     <div layout:fragment="content" class="content">
         <div class="header">
-            <img class="logo left" th:src="@{image/toco-orange.png}">
+            <img class="pointer logo left" onclick="func_move('/')" th:src="@{image/toco-orange.png}">
 
             <span class="pointer right">MYPAGE</span>
             <span class="pointer right" onclick="func_move('login')">LOGIN</span>
-            <span class="pointer right" onclick="func_move('logout')">LOGOUT</span>
         </div>
-        <div id="greetings">
-            <span class="bold">Hello TOCO!</span>
-            <p>
-                안녕하세요 toco 운영자 rosie입니다 :)
-            </p>
+
+        <div class="introduce">
+            <h4 class="bold">toco? 투코? 무슨 서비스인가요?</h4>
+            <p>toco는 'Today Coding'의 약어로 매일매일 오늘해야 할 코딩학습 내용을 이메일로 보내주는 교육 서비스입니다.</p>
+            <p>당장 새로운 언어를 시작하고 싶은데 어디서부터 해야할지 모르겠다거나, 새로운 프로젝트를 만드는데 일정을 잡고 특정 일자 안에 목표를 달성하고 싶은 사람들을 위한 서비스를 제공합니다.</p>
+            <p>메일링을 하면서, </p>
         </div>
     </div>
 
