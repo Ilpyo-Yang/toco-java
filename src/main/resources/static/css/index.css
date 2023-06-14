@@ -3,21 +3,21 @@
     text-align: left;
 }
 #header > img{
-    width: 1.5vw;
-    min-width: 20px;
-    display: inline-block;
+    width: 16vw;
+    margin-top: 5vh;
+    transform: scaleX(-1);
 }
 #header > span{
     font-weight: bold;
     color: #965ca5;
 }
 
-.content > .row{
+.row{
     width: 95%;
     margin: 0 auto;
     padding-top: 8vh;
 }
-.content > .col-5{
+.row > .col-5{
     text-align: left;
 }
 
@@ -47,6 +47,26 @@
 }
 .more{
     float: right;
+}
+.recommended > ul{
+    margin-top: 3vh;
+}
+.recommended > ul > li{
+    padding: 2vh;
+}
+.recommended > ul > li > .name{
+    color: #d25726;
+    font-weight: bold;
+}
+.recommended > ul > li > span > .badge{
+    float: right;
+    margin-right: 0.1rem;
+    font-size: 0.7rem;
+    font-weight: normal;
+}
+.recommended > ul > li > .intro{
+    margin-top: 1vh;
+    display: block;
 }
 
 @media all and (min-width:768px) and (max-width:1023px) {
