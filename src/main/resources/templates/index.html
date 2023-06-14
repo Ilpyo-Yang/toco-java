@@ -14,27 +14,80 @@
 
             <span class="pointer right">MYPAGE</span>
             <span class="pointer right" onclick="func_move('login')">LOGIN</span>
+            <span class="pointer right" onclick="func_move('info')">INFO</span>
         </div>
-        <div id="greetings">
-            <span>다시 만나서 반가워요 :)</span><br>
-            <span class="bold">Hello Rose!</span>
-            <img id="header-background" th:src="@{image/header-background.png}">
-        </div>
-        <div id="programs">
-            <span>프로그램 선택</span>
-            <br>
-            <select>
-                <option>aaaaaaaaaaaaaaaaa</option>
-                <option>aaaaaaaaaaaaaaaaa</option>
-                <option>aaaaaaaaaaaaaaaaa</option>
-                <option>aaaaaaaaaaaaaaaaa</option>
-            </select>
-            <button>REGISTER</button>
-            <div>
-                <span class="pointer right">details</span>
-                <img src=""/>
+
+        <div class="row">
+            <div class="col-5">
+                <div class="greetings">
+                    <span>다시 만나서 반가워요, </span>
+                    <span class="bold">Rosie :)</span>
+                    <img th:src="@{image/header-background.png}">
+                </div>
+            </div>
+            <div class="col-7">
+                <div class="programs">
+                    <span class="section">toco 바로 시작하기</span>
+                    <br>
+                    <div class="input-group">
+                        <select class="form-select form-select-sm" aria-label=".form-select-sm example">
+                            <option selected>Open this select menu</option>
+                            <option value="1">One</option>
+                            <option value="2">Two</option>
+                            <option value="3">Three</option>
+                        </select>
+                        <div class="input-group-append">
+                            <button class="btn btn-outline-secondary" type="button">신청하기</button>
+                        </div>
+                    </div>
+                    <div class="recommended">
+                        <div>
+                            <span class="section">요즘 인기있는 프로그램</span>
+                            <span class="pointer more">+ more</span>
+                        </div>
+                        <div class="container">
+                            <div class="row">
+                                <div class="col pointer">
+                                    <span class="name">처음부터 시작하는 Java</span>
+                                    <br>
+                                    <
+                                </div>
+                                <div class="col pointer">
+                                    <span class="name">처음부터 시작하는 Java</span>
+                                    <br>
+                                    <span class="info">수강기간</span>
+                                    <span class="bold">16</span>주
+                                    <br>
+                                    <span class=>만족도</span>
+                                    <span class="bold">3.5</span>점
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col pointer">
+                                    <span class="name">처음부터 시작하는 Java</span>
+                                    <br>
+                                    <span class="info">수강기간</span>
+                                    <span class="bold">16</span>주
+                                    <br>
+                                    <span class=>만족도</span>
+                                    <span class="bold">3.5</span>점
+                                </div>
+                                <div class="col pointer">
+                                    <span class="name">처음부터 시작하는 Java</span>
+                                    <br>
+                                    <span class="info">수강기간</span>
+                                    <span class="bold">16</span>주
+                                    <br>
+                                    <span class=>만족도</span>
+                                    <span class="bold">3.5</span>점
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
+
     </div>
 
 </html>

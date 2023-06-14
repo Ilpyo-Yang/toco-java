@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layouts/layout}">
+
+    <head>
+        <link rel="stylesheet" th:href="@{css/index.css}">
+        <script th:src="@{js/index.js}"></script>
+    </head>
+
+    <div layout:fragment="content" class="content">
+        <div class="header">
+            <img class="logo left" th:src="@{image/toco-orange.png}">
+
+            <span class="pointer right">MYPAGE</span>
+            <span class="pointer right" onclick="func_move('login')">LOGIN</span>
+            <span class="pointer right" onclick="func_move('logout')">LOGOUT</span>
+        </div>
+        <div id="greetings">
+            <span class="bold">Hello TOCO!</span>
+            <p>
+                안녕하세요 toco 운영자 rosie입니다 :)
+            </p>
+        </div>
+    </div>
+
+</html>

@@ -22,14 +22,27 @@
 }
 
 /* 화면 */
+@font-face {
+    src : url("../font/NanumSquareRoundR.ttf");
+    font-family: "NanumR"
+}
+
+html{
+    width: 100%;
+    overflow-x: hidden;
+}
+body{
+    font-family: "NanumR";
+    background-color: #f29c20;
+}
 .content{
     background-color: white;
     font-size: 1vw;
-    padding: 3vw !important;
+    padding: 4vw !important;
     min-width: 270px;
-    max-width: 500px;
-    margin: 20vh auto;
-    border-radius: 2%;
+    max-width: 80%;
+    margin: 3vh auto;
+    border-radius: 30px;
     box-shadow: 2px 2px 2px 2px #d25726;
     text-align: center;
 }
@@ -53,4 +66,20 @@
     .content{
         padding: 6vw !important;
     }
+}
+
+.box-cart::-webkit-scrollbar {
+    width: 11px; /* 스크롤바의 너비 */
+}
+
+.box-cart::-webkit-scrollbar-thumb {
+    height: 75%; /* 스크롤바의 길이 */
+    background: white; /* 스크롤바의 색상 */
+    background-clip: padding-box;
+    border: 4px solid #eae8fe;
+    border-radius: 50px;
+}
+
+.box-cart::-webkit-scrollbar-track {
+    background: #eae8fe; /*스크롤바 뒷 배경 색상*/
 }

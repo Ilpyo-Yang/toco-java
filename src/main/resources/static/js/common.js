@@ -5,6 +5,7 @@ function func_move(str){
         case 'login': location.href = '/login'; break;
         case 'logout': location.href = '/logout'; break;
         case 'signup': location.href = '/signup'; break;
+        case 'info': location.href = '/info'; break;
         case 'github': window.open('https://www.naver.com'); break;
         case 'blog': window.open('https://www.naver.com'); break;
     }
