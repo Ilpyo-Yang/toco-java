@@ -1,0 +1,19 @@
+.row{
+    width: 95%;
+    margin: 0 auto;
+    padding-top: 4vh;
+}
+
+@media all and (min-width:768px) and (max-width:1023px) {
+
+}
+
+@media all and (min-width:480px) and (max-width:767px) {
+
+}
+
+@media all and (max-width:479px) {
+    .content{
+        padding: 6vw !important;
+    }
+}
