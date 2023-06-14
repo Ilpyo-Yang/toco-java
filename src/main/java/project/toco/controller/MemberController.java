@@ -15,4 +15,14 @@ public class MemberController {
         return "login";
     }
 
+    @GetMapping(value = {"/signup"})
+    public String signup(){
+        return "signup";
+    }
+
+    @GetMapping(value = {"/logout"})
+    public void logout(){
+
+    }
+
 }
