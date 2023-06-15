@@ -17,6 +17,10 @@
     font-size: 0.7rem;
     min-height: 0.8rem;
 }
+.sector{
+    padding-bottom: 0.5vh;
+    display: block;
+}
 
 .form-select{
     display: inline-block;
