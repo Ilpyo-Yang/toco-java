@@ -2,6 +2,58 @@
     width: 95%;
     margin: 0 auto;
     padding-top: 4vh;
+    text-align: left;
+}
+
+.filters{
+    padding-bottom: 2vh;
+    display: block;
+}
+.filter{
+    border-bottom: 0.01rem solid lightgray;
+    padding: 1vh;
+}
+.filter > .form-check{
+    font-size: 0.7rem;
+    min-height: 0.8rem;
+}
+
+.form-select{
+    display: inline-block;
+    width: 30%;
+}
+
+.programs{
+
+}
+.input-group{
+    margin-top: 1vh;
+}
+.recommended{
+    margin-top: 2vh;
+}
+.more{
+    float: right;
+}
+.recommended > ul{
+    /*margin-top: 3vh;*/
+}
+.recommended > ul > li{
+    padding: 2vh;
+}
+.recommended > ul > li > .name{
+    color: #d25726;
+    font-weight: bold;
+}
+.recommended > ul > li > span > .badge{
+    float: right;
+    margin-right: 0.1rem;
+    font-size: 0.7rem;
+    font-weight: normal;
+}
+.recommended > ul > li > .intro{
+    margin-top: 1vh;
+    display: block;
 }
 
 @media all and (min-width:768px) and (max-width:1023px) {

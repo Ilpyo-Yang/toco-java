@@ -2,10 +2,21 @@ package project.toco.controller;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
-import project.toco.service.ProgressService;
+import org.springframework.web.bind.annotation.GetMapping;
+import project.toco.service.EducationService;
 
 @Controller
 @RequiredArgsConstructor
 public class EducationController {
-    private final ProgressService progressService;
+    private final EducationService educationService;
+
+    @GetMapping(value = {"/edu"})
+    public String edu(){
+        return "edu";
+    }
+
+    @GetMapping(value = {"/eduDetail"})
+    public String eduDetail(){
+        return "eduDetail";
+    }
 }

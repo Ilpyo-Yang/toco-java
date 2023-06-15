@@ -4,54 +4,183 @@
       layout:decorate="~{layouts/layout}">
 
     <head>
-        <link rel="stylesheet" th:href="@{css/index.css}">
-        <script th:src="@{js/index.js}"></script>
+        <link rel="stylesheet" th:href="@{css/edu.css}">
+        <script th:src="@{js/edu.js}"></script>
     </head>
 
     <div layout:fragment="content" class="content">
         <div class="header">
             <img class="pointer logo left" onclick="func_move('/')" th:src="@{image/toco-orange.png}">
 
-            <span class="pointer right">MYPAGE</span>
-            <span class="pointer right" onclick="func_move('logout')">LOGOUT</span>
-            <span class="pointer right" onclick="func_move('login')">LOGIN</span>
-            <span class="pointer right" onclick="func_move('signup')">SIGNUP</span>
-            <span class="pointer right" onclick="func_move('info')">INFO</span>
+            <span class="pointer tab right" onclick="func_move('mypage')">MYPAGE</span>
+            <span class="pointer tab right" onclick="func_move('edu')">EDU</span>
+            <span class="pointer tab right" onclick="func_move('logout')">LOGOUT</span>
+            <span class="pointer tab right" onclick="func_move('login')">LOGIN</span>
+            <span class="pointer tab right" onclick="func_move('signup')">SIGNUP</span>
+            <span class="pointer tab right" onclick="func_move('info')">INFO</span>
         </div>
-
-        <ul class="nav nav-tabs tab">
-            <li class="nav-item">
-                <a class="nav-link active" aria-current="page" href="#">Active</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="#">Link</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="#">Link</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
-            </li>
-        </ul>
 
         <div class="row">
-            <div class="col-4">
-                <div class="list-group" id="list-tab" role="tablist">
-                    <a class="list-group-item list-group-item-action active" id="list-home-list" data-bs-toggle="list" href="#list-home" role="tab" aria-controls="list-home">Home</a>
-                    <a class="list-group-item list-group-item-action" id="list-profile-list" data-bs-toggle="list" href="#list-profile" role="tab" aria-controls="list-profile">Profile</a>
-                    <a class="list-group-item list-group-item-action" id="list-messages-list" data-bs-toggle="list" href="#list-messages" role="tab" aria-controls="list-messages">Messages</a>
-                    <a class="list-group-item list-group-item-action" id="list-settings-list" data-bs-toggle="list" href="#list-settings" role="tab" aria-controls="list-settings">Settings</a>
+            <div class="col-3">
+                <div>
+                    <span class="bold filters">Filters</span>
+                    <div class="filter">
+                        <span>수강기간</span>
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="periodRadio" id="period1" value="10" checked>
+                            <label class="form-check-label" for="period1">
+                                10일 미만
+                            </label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="periodRadio" id="period2" value="20">
+                            <label class="form-check-label" for="period2">
+                                10일 이상 - 20일 미만
+                            </label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="periodRadio" id="period3" value="30">
+                            <label class="form-check-label" for="period3">
+                                20일 이상 - 30일 미만
+                            </label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="periodRadio" id="period4" value="40">
+                            <label class="form-check-label" for="period4">
+                                30일 이상
+                            </label>
+                        </div>
+                    </div>
+                    <div class="filter">
+                        <span>평점</span>
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="starRadio" id="star5" value="5" checked>
+                            <label class="form-check-label" for="star5">
+                                ★★★★★
+                            </label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="starRadio" id="star4" value="4">
+                            <label class="form-check-label" for="star4">
+                                ★★★★
+                            </label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="starRadio" id="star3" value="3">
+                            <label class="form-check-label" for="star3">
+                                ★★★
+                            </label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="starRadio" id="star2" value="2">
+                            <label class="form-check-label" for="star2">
+                                ★★
+                            </label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="starRadio" id="star1" value="1">
+                            <label class="form-check-label" for="star1">
+                                ★
+                            </label>
+                        </div>
+                    </div>
                 </div>
             </div>
-            <div class="col-8">
-                <div class="tab-content" id="nav-tabContent">
-                    <div class="tab-pane fade show active" id="list-home" role="tabpanel" aria-labelledby="list-home-list">...</div>
-                    <div class="tab-pane fade" id="list-profile" role="tabpanel" aria-labelledby="list-profile-list">...</div>
-                    <div class="tab-pane fade" id="list-messages" role="tabpanel" aria-labelledby="list-messages-list">...</div>
-                    <div class="tab-pane fade" id="list-settings" role="tabpanel" aria-labelledby="list-settings-list">...</div>
+            <div class="col-9">
+                <select class="form-select form-select-sm" aria-label=".form-select-sm example">
+                    <option selected>메인 카테고리 전체</option>
+                    <option value="1">One</option>
+                    <option value="2">Two</option>
+                    <option value="3">Three</option>
+                </select>
+                <select class="form-select form-select-sm" aria-label=".form-select-sm example">
+                    <option selected>세부 카테고리 전체</option>
+                    <option value="1">One</option>
+                    <option value="2">Two</option>
+                    <option value="3">Three</option>
+                </select>
+                <div class="programs">
+                    <div class="recommended">
+                        <ul class="list-group list-group-flush">
+                            <li class="list-group-item pointer">
+                                <span class="name">
+                                    처음부터 시작하는 Java
+                                    <span class="badge bg-secondary">3.5점</span>
+                                    <span class="badge bg-secondary">16주</span>
+                                    <span class="badge bg-secondary">기초</span>
+                                </span>
+                                <br>
+                                <span class="intro">
+                                    자바를 처음 배우는 학생들도 쉽게 배울 수 있도록 기초부터 학습할 수 있도록 합니다.
+                                </span>
+                            </li>
+                            <li class="list-group-item pointer">
+                                <span class="name">
+                                    처음부터 시작하는 Java
+                                    <span class="badge bg-secondary">3.5점</span>
+                                    <span class="badge bg-secondary">16주</span>
+                                    <span class="badge bg-secondary">기초</span>
+                                </span>
+                                <br>
+                                <span class="intro">
+                                    자바를 처음 배우는 학생들도 쉽게 배울 수 있도록 기초부터 학습할 수 있도록 합니다.
+                                </span>
+                            </li>
+                            <li class="list-group-item pointer">
+                                <span class="name">
+                                    처음부터 시작하는 Java
+                                    <span class="badge bg-secondary">3.5점</span>
+                                    <span class="badge bg-secondary">16주</span>
+                                    <span class="badge bg-secondary">기초</span>
+                                </span>
+                                <br>
+                                <span class="intro">
+                                    자바를 처음 배우는 학생들도 쉽게 배울 수 있도록 기초부터 학습할 수 있도록 합니다.
+                                </span>
+                            </li>
+                            <li class="list-group-item pointer">
+                                <span class="name">
+                                    처음부터 시작하는 Java
+                                    <span class="badge bg-secondary">3.5점</span>
+                                    <span class="badge bg-secondary">16주</span>
+                                    <span class="badge bg-secondary">기초</span>
+                                </span>
+                                <br>
+                                <span class="intro">
+                                    자바를 처음 배우는 학생들도 쉽게 배울 수 있도록 기초부터 학습할 수 있도록 합니다.
+                                </span>
+                            </li>
+                            <li class="list-group-item pointer">
+                                <span class="name">
+                                    처음부터 시작하는 Java
+                                    <span class="badge bg-secondary">3.5점</span>
+                                    <span class="badge bg-secondary">16주</span>
+                                    <span class="badge bg-secondary">기초</span>
+                                </span>
+                                <br>
+                                <span class="intro">
+                                    자바를 처음 배우는 학생들도 쉽게 배울 수 있도록 기초부터 학습할 수 있도록 합니다.
+                                </span>
+                            </li>
+                            <li class="list-group-item pointer">
+                                <span class="name">
+                                    처음부터 시작하는 Java
+                                    <span class="badge bg-secondary">3.5점</span>
+                                    <span class="badge bg-secondary">16주</span>
+                                    <span class="badge bg-secondary">기초</span>
+                                </span>
+                                <br>
+                                <span class="intro">
+                                    자바를 처음 배우는 학생들도 쉽게 배울 수 있도록 기초부터 학습할 수 있도록 합니다.
+                                </span>
+                            </li>
+                        </ul>
+
+                    </div>
                 </div>
             </div>
         </div>
+
     </div>
 
 </html>
