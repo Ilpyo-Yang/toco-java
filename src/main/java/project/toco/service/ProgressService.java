@@ -1,5 +1,6 @@
 package project.toco.service;
 
+import java.time.LocalDate;
 import java.util.List;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -28,11 +29,11 @@ public class ProgressService {
     return progressRepository.findAll();
   }
 
-  public String create(Status status, String member_uuid, String education_content_uuid){
+  public String create(LocalDate startDate, String mailingDays, Status status, String member_uuid, String education_content_uuid){
     Member member = memberRepository.findById(member_uuid).get();
     EducationContent educationContent = educationContentRepository.findById(education_content_uuid).get();
 
-    Progress progress = Progress.createProgress(status, member, educationContent);
+    Progress progress = Progress.createProgress(startDate, mailingDays, status, member, educationContent);
     progressRepository.save(progress);
     return progress.getUuid();  // todo 여기 확인하기
   }

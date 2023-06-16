@@ -29,6 +29,7 @@ public class EducationContent {
   private String uuid;
   private int chapter;
   private String name;
+  private String intro;
   private String details;
 
   @ManyToOne(fetch = FetchType.LAZY)
@@ -44,10 +45,11 @@ public class EducationContent {
     progress.setEducation_content(this);
   }
 
-  public static EducationContent createEducationContents(int chapter, String name, String details){
+  public static EducationContent createEducationContents(int chapter, String name, String intro, String details){
     EducationContent educationContent = new EducationContent();
     educationContent.setChapter(chapter);
     educationContent.setName(name);
+    educationContent.setIntro(intro);
     educationContent.setDetails(details);
     return educationContent;
   }

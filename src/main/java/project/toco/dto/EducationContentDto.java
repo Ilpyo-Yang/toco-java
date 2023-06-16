@@ -13,6 +13,7 @@ public class EducationContentDto {
   private String uuid;
   private int chapter;
   private String name;
+  private String intro;
   private String details;
   private String education_uuid;
 }

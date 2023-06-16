@@ -46,7 +46,7 @@ public class EducationService {
     List<EducationContent> educationContents = new ArrayList<>();
     EducationContent educationContent;
     for(EducationContentDto dto : educationContentDtos){
-      educationContent = EducationContent.createEducationContents(dto.getChapter(), dto.getName(), dto.getDetails());
+      educationContent = EducationContent.createEducationContents(dto.getChapter(), dto.getName(), dto.getIntro(), dto.getDetails());
       educationContents.add(educationContent);
     }
     return educationContents;

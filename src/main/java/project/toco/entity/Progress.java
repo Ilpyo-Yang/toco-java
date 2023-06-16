@@ -10,6 +10,9 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
+import java.time.DateTimeException;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
 import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -25,6 +28,8 @@ public class Progress extends BaseEntity {
   @GeneratedValue(strategy = GenerationType.UUID)
   @Column(name="progress_uuid")
   private String uuid;
+  private LocalDate startDate;
+  private String mailingDays;
 
   @Enumerated(EnumType.STRING)
   private Status status;
@@ -37,8 +42,10 @@ public class Progress extends BaseEntity {
   @JoinColumn(name="education_content_uuid")
   private EducationContent education_content;
 
-  public static Progress createProgress(Status status, Member member, EducationContent educationContent){
+  public static Progress createProgress(LocalDate startDate, String mailingDays, Status status, Member member, EducationContent educationContent){
     Progress progress = new Progress();
+    progress.setStartDate(startDate);
+    progress.setMailingDays(mailingDays);
     progress.setStatus(status);
     progress.setMember(member);
     progress.setEducation_content(educationContent);
