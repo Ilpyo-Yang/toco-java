@@ -1,0 +1,74 @@
+.row{
+    width: 95%;
+    margin: 0 auto;
+    padding-top: 4vh;
+    text-align: left;
+}
+
+/* 서비스 소개 */
+.program{
+
+}
+.name{
+    color: #d25726;
+    font-weight: bold;
+    font-size: 1.1rem;
+}
+.badge{
+    float: right;
+    margin-right: 0.1rem;
+    font-size: 0.7rem;
+    font-weight: normal;
+}
+.intro{
+    margin-top: 1vh;
+    display: block;
+}
+
+
+/* 신청 */
+.form{
+    padding-bottom: 2vh;
+    display: block;
+}
+.form-control-plaintext{
+    border-bottom: 0.01rem solid lightgray;
+    margin-bottom: 2vh;
+}
+.days{
+    padding: 0.2rem;
+    border: 0.01rem dotted lightgray;
+    border-radius: 100%;
+    display: inline-block;
+    margin-right: 0.3rem;
+    width: 2.2vw;
+    text-align: center;
+    cursor: pointer;
+}
+/*.days:hover{
+    border: 0.01rem dotted #e78324;
+}*/
+.btn{
+    display: block;
+    width: 100%;
+    line-height: 2vh;
+    color: white;
+    font-size: 0.8rem;
+    margin-top: 5vh;
+    background-color: #e78324;
+    text-align: center !important;
+}
+
+@media all and (min-width:768px) and (max-width:1023px) {
+
+}
+
+@media all and (min-width:480px) and (max-width:767px) {
+
+}
+
+@media all and (max-width:479px) {
+    .content{
+        padding: 6vw !important;
+    }
+}
