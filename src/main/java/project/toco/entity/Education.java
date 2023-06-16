@@ -4,6 +4,8 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
@@ -30,22 +32,29 @@ public class Education extends BaseTimeEntity {
   private int period;
   @Column(name="type_uuid")
   private String type;
+  @Enumerated(EnumType.STRING)
+  private Level level;
 
   @JsonIgnore
   @OneToMany(mappedBy = "education", cascade = CascadeType.ALL)
   private List<EducationContent> educationContents = new ArrayList<>();
+
+  @JsonIgnore
+  @OneToMany(mappedBy = "education", cascade = CascadeType.ALL)
+  private List<EducationScore> educationScores = new ArrayList<>();
 
   public void addEducationContents(EducationContent educationContent) {
     educationContents.add(educationContent);
     educationContent.setEducation(this);
   }
 
-  public static Education createEducation(String name, String intro, String type_uuid, List<EducationContent> educationContents){
+  public static Education createEducation(String name, String intro, String type_uuid, Level level, List<EducationContent> educationContents){
     Education education = new Education();
     education.setName(name);
     education.setIntro(intro);
     education.setPeriod(educationContents.size());
     education.setType(type_uuid);
+    education.setLevel(level);
     for(EducationContent educationContent : educationContents){
       education.addEducationContents(educationContent);
     }

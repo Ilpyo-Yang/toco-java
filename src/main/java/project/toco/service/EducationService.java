@@ -26,7 +26,7 @@ public class EducationService {
   }
 
   public String create(EducationDto eduDto, List<EducationContentDto> educationContentDtos){
-    Education education = Education.createEducation(eduDto.getName(), eduDto.getIntro(), eduDto.getType(), mapper(educationContentDtos));
+    Education education = Education.createEducation(eduDto.getName(), eduDto.getIntro(), eduDto.getType(), eduDto.getLevel(), mapper(educationContentDtos));
     educationRepository.save(education);
     return education.getUuid();
   }

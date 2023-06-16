@@ -6,6 +6,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import project.toco.entity.EducationType;
+import project.toco.entity.Level;
 
 @Getter
 @Setter
@@ -18,6 +19,7 @@ public class EducationDto {
   private int students;
   private int period;
   private String type;
+  private Level level;
   private LocalDateTime createdDate;
   private LocalDateTime lastModifiedDate;
 }
