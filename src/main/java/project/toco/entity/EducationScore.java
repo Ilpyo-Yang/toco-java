@@ -29,7 +29,7 @@ public class EducationScore {
   @JoinColumn(name="education_uuid")
   private Education education;
 
-  public static EducationScore createEducationScore(String education_uuid, String member_uuid, int score, Education education){
+  public static EducationScore createEducationScore(String member_uuid, int score, Education education){
     EducationScore educationContent = new EducationScore();
     educationContent.setEducation(education);
     educationContent.setMember_uuid(member_uuid);

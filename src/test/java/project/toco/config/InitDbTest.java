@@ -12,9 +12,11 @@ import project.toco.dto.EducationDto;
 import project.toco.dto.EducationTypeDto;
 import project.toco.dto.form.SignupForm;
 import project.toco.entity.Education;
+import project.toco.entity.EducationScore;
 import project.toco.entity.Level;
 import project.toco.entity.Member;
 import project.toco.entity.Status;
+import project.toco.service.EducationScoreService;
 import project.toco.service.EducationService;
 import project.toco.service.EducationTypeService;
 import project.toco.service.MemberService;
@@ -32,6 +34,8 @@ public class InitDbTest {
   EducationService educationService;
   @Autowired
   EducationTypeService educationTypeService;
+  @Autowired
+  EducationScoreService educationScoreService;
 
   @Test
   public void intTypeDb(){
@@ -94,5 +98,13 @@ public class InitDbTest {
     Education education = educationService.findAll().get(0);
     String progress_uuid = progressService.create(LocalDate.parse("2023-06-20"), "mon,sat", Status.Finished, member.getUuid(), education.getEducationContents().get(0).getUuid());
     assert progressService.findById(progress_uuid).getStatus().equals(Status.Finished);
+  }
+
+  @Test
+  public void intEduScoreDb() {
+    String member_uuid = memberService.findAll().get(0).getUuid();
+    Education education = educationService.findAll().get(0);
+    EducationScore educationScore = educationScoreService.create(EducationScore.createEducationScore(member_uuid, 2, education));
+    assert educationScore.getUuid().equals(educationScoreService.findById(educationScore.getUuid()).getUuid());
   }
 }

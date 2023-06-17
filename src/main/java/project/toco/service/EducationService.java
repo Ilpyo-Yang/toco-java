@@ -17,6 +17,15 @@ import project.toco.repository.EducationRepository;
 public class EducationService {
   private final EducationRepository educationRepository;
 
+  public EducationDto findOneEduToDto(String uuid){
+    return educationRepository.findOneEduToDto(uuid);
+  }
+
+
+  public List<EducationDto> findAllToDto() {
+    return educationRepository.findAllToDto();
+  }
+
   public Education findById(String uuid){
     return educationRepository.findById(uuid).get();
   }
@@ -51,4 +60,5 @@ public class EducationService {
     }
     return educationContents;
   }
+
 }

@@ -18,6 +18,7 @@ public class EducationDto {
   private String intro;
   private int students;
   private int period;
+  private long score;
   private String type;
   private Level level;
   private LocalDateTime createdDate;
