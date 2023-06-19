@@ -23,4 +23,7 @@ public class EducationTypeService {
     return educationTypeRepository.findTypesToDto();
   }
 
+  public List<String> findMainType() {
+    return educationTypeRepository.findMainType();
+  }
 }

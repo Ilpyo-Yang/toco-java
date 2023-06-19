@@ -5,7 +5,6 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-import project.toco.entity.EducationType;
 import project.toco.entity.Level;
 
 @Getter

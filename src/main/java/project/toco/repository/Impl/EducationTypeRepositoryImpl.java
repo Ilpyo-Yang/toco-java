@@ -20,4 +20,14 @@ public class EducationTypeRepositoryImpl implements EducationTypeCustom {
         .from(educationType)
         .fetch();
   }
+
+  @Override
+  public List<String> findMainType() {
+    return jpaQueryFactory
+        .select(educationType.main).distinct()
+        .from(educationType)
+        .orderBy(educationType.main.desc())
+        .fetch();
+  }
+
 }

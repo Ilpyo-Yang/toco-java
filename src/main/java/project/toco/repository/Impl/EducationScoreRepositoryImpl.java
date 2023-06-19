@@ -6,7 +6,6 @@ import static project.toco.entity.QEducationScore.educationScore;
 
 import com.querydsl.core.types.dsl.BooleanExpression;
 import com.querydsl.jpa.impl.JPAQueryFactory;
-import java.math.RoundingMode;
 import lombok.RequiredArgsConstructor;
 import project.toco.repository.custom.EducationScoreCustom;
 

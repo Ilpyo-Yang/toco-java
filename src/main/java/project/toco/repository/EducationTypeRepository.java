@@ -10,4 +10,5 @@ import project.toco.repository.custom.EducationTypeCustom;
 @Repository
 public interface EducationTypeRepository extends JpaRepository<EducationType,String>, EducationTypeCustom {
   List<EducationTypeDto> findTypesToDto();
+  List<String> findMainType();
 }

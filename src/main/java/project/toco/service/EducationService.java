@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import project.toco.dto.EducationContentDto;
 import project.toco.dto.EducationDto;
+import project.toco.dto.condition.EduCondition;
 import project.toco.entity.Education;
 import project.toco.entity.EducationContent;
 import project.toco.repository.EducationRepository;
@@ -22,8 +23,8 @@ public class EducationService {
   }
 
 
-  public List<EducationDto> findAllToDto() {
-    return educationRepository.findAllToDto();
+  public List<EducationDto> findAllToDto(EduCondition eduCondition) {
+    return educationRepository.findAllToDto(eduCondition);
   }
 
   public Education findById(String uuid){
