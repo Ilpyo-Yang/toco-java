@@ -11,12 +11,14 @@ import project.toco.dto.condition.EduCondition;
 import project.toco.entity.Education;
 import project.toco.entity.EducationContent;
 import project.toco.repository.EducationRepository;
+import project.toco.repository.EducationScoreRepository;
 
 @Service
 @Transactional(readOnly = true)
 @RequiredArgsConstructor
 public class EducationService {
   private final EducationRepository educationRepository;
+  private final EducationScoreRepository educationScoreRepository;
 
   public EducationDto findOneEduToDto(String uuid){
     return educationRepository.findOneEduToDto(uuid);
@@ -24,7 +26,17 @@ public class EducationService {
 
 
   public List<EducationDto> findAllToDto(EduCondition eduCondition) {
-    return educationRepository.findAllToDto(eduCondition);
+    List<EducationDto> educationDtoList = educationRepository.findAllToDto(eduCondition);
+    List<EducationDto> scored_educationDtoList = new ArrayList<>();
+    long score;
+    for(EducationDto dto: educationDtoList){
+      score = educationScoreRepository.calculateScore(dto.getUuid());
+      if((int)score == eduCondition.getStar()){
+        dto.setScore(score);
+        scored_educationDtoList.add(dto);
+      }
+    }
+    return scored_educationDtoList;
   }
 
   public Education findById(String uuid){

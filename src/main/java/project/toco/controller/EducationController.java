@@ -40,11 +40,7 @@ public class EducationController {
         if("all".equals(main)) main = null;
         if("all".equals(sub)) sub = null;
         EduCondition eduCondition = new EduCondition(period, star, main, sub);
-        List<EducationDto> educationDtoList = educationService.findAllToDto(eduCondition);
-        for(EducationDto dto: educationDtoList){
-            dto.setScore(educationScoreService.calculateScore(dto.getUuid()));
-        }
-        return educationDtoList;
+        return educationService.findAllToDto(eduCondition);
     }
 
     @GetMapping(value = {"/eduDetail/{uuid}"})
