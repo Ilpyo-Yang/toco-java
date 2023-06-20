@@ -6,5 +6,7 @@ import project.toco.dto.condition.EduCondition;
 
 public interface EducationCustom {
   EducationDto findOneEduToDto(String uuid);
-  List<EducationDto> findAllToDto(EduCondition eduCondition);
+  List<EducationDto> findAllToDto();
+  List<EducationDto> findAllToDtoWithCondition(EduCondition eduCondition);
+  List<String> findAllEduNames();
 }

@@ -28,15 +28,33 @@ public class EducationRepositoryImpl implements EducationCustom {
   }
 
   @Override
-  public List<EducationDto> findAllToDto(EduCondition eduCondition) {
+  public List<EducationDto> findAllToDto() {
     return jpaQueryFactory
         .select(Projections.fields(EducationDto.class,
             education.uuid, education.name, education.intro, education.students, education.period,
             education.type, education.level, education.createdDate, education.lastModifiedDate))
         .from(education)
-        .where(education.type.in(eduCondition.getType()),
+        .fetch();
+  }
+
+  @Override
+  public List<EducationDto> findAllToDtoWithCondition(EduCondition eduCondition) {
+    return jpaQueryFactory
+        .select(Projections.fields(EducationDto.class,
+            education.uuid, education.name, education.intro, education.students, education.period,
+            education.type, education.level, education.createdDate, education.lastModifiedDate))
+        .from(education)
+        .where(typeEq(eduCondition.getType()),
             levelEq(eduCondition.getLevel()),
             education.period.between(eduCondition.getPeriod()-10,eduCondition.getPeriod()))
+        .fetch();
+  }
+
+  @Override
+  public List<String> findAllEduNames() {
+    return jpaQueryFactory
+        .select(education.uuid)
+        .from(education)
         .fetch();
   }
 
@@ -44,8 +62,8 @@ public class EducationRepositoryImpl implements EducationCustom {
     return uuid!=null ? education.uuid.eq(uuid) : null;
   }
 
-  private BooleanExpression typeEq(String type) {
-    return type!=null ? education.type.eq(type) : null;
+  private BooleanExpression typeEq(List<String> type) {
+    return type!=null ? education.type.in(type) : null;
   }
 
   private BooleanExpression levelEq(Level level) {

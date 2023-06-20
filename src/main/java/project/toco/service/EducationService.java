@@ -1,7 +1,9 @@
 package project.toco.service;
 
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
+import java.util.stream.Collectors;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -24,9 +26,17 @@ public class EducationService {
     return educationRepository.findOneEduToDto(uuid);
   }
 
+  public List<EducationDto> findAllToDto() {
+    List<EducationDto> educationDtoList = educationRepository.findAllToDto();
+    for(EducationDto dto: educationDtoList){
+      dto.setScore(educationScoreRepository.calculateScore(dto.getUuid()));
+    }
+    return educationDtoList;
+  }
 
-  public List<EducationDto> findAllToDto(EduCondition eduCondition) {
-    List<EducationDto> educationDtoList = educationRepository.findAllToDto(eduCondition);
+
+  public List<EducationDto> findAllToDtoWithCondition(EduCondition eduCondition) {
+    List<EducationDto> educationDtoList = educationRepository.findAllToDtoWithCondition(eduCondition);
     List<EducationDto> scored_educationDtoList = new ArrayList<>();
     long score;
     for(EducationDto dto: educationDtoList){
@@ -45,6 +55,10 @@ public class EducationService {
 
   public List<Education> findAll(){
     return educationRepository.findAll();
+  }
+
+  public List<String> findAllEduNames(){
+    return educationRepository.findAllEduNames();
   }
 
   public String create(EducationDto eduDto, List<EducationContentDto> educationContentDtos){
@@ -74,4 +88,8 @@ public class EducationService {
     return educationContents;
   }
 
+  public List<EducationDto> getTopThree(List<EducationDto> eduList) {
+    eduList = eduList.stream().sorted(Comparator.comparing(EducationDto::getScore)).collect(Collectors.toList());
+    return eduList;
+  }
 }

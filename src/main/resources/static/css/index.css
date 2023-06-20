@@ -40,7 +40,7 @@
     color: #d25726;
     font-weight: bold;
 }
-.recommended > ul > li > span > .badge{
+.recommended > ul > li > .badge{
     float: right;
     margin-right: 0.1rem;
     font-size: 0.7rem;

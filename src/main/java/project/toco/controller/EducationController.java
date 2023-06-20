@@ -43,7 +43,7 @@ public class EducationController {
         if("all".equals(sub)) sub = null;
         List<String> type = educationTypeService.findUuid(main, sub);
         EduCondition eduCondition = new EduCondition(period, star, Level.valueOf(level), type);
-        return educationService.findAllToDto(eduCondition);
+        return educationService.findAllToDtoWithCondition(eduCondition);
     }
 
     @ResponseBody

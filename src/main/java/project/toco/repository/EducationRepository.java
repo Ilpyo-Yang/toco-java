@@ -12,5 +12,8 @@ import project.toco.repository.custom.EducationCustom;
 public interface EducationRepository extends JpaRepository<Education, String>, EducationCustom {
   EducationDto findOneEduToDto(String uuid);
 
-  List<EducationDto> findAllToDto(EduCondition eduCondition);
+  List<EducationDto> findAllToDto();
+  List<EducationDto> findAllToDtoWithCondition(EduCondition eduCondition);
+
+  List<String> findAllEduNames();
 }
