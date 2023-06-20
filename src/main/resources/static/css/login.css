@@ -38,17 +38,18 @@ form > input{
     font-size: 2rem;
     margin-bottom: 2vw;
 }
-.login_btn{
+.submit_btn{
     color: white;
     margin-top: 1.5vw;
     margin-bottom: 2vw;
     background-color: #e78324;
     text-align: center !important;
 }
-#warning{
+.warning{
     color: red;
-    margin-top: 1vh;
     text-align: left;
+    display: block;
+    margin-bottom: 3vh;
 }
 .col > img{
     margin: 5vh 0;
