@@ -46,7 +46,7 @@ public class EducationRepositoryImpl implements EducationCustom {
         .from(education)
         .where(typeEq(eduCondition.getType()),
             levelEq(eduCondition.getLevel()),
-            education.period.between(eduCondition.getPeriod()-10,eduCondition.getPeriod()))
+            periodEq(eduCondition.getPeriod()))
         .fetch();
   }
 
@@ -67,6 +67,10 @@ public class EducationRepositoryImpl implements EducationCustom {
   }
 
   private BooleanExpression levelEq(Level level) {
-    return level!=null ? education.level.eq(level) : null;
+    return !"All".equals(level.name()) ? education.level.eq(level) : null;
+  }
+
+  private BooleanExpression periodEq(int period) {
+    return period!=0 ? education.period.between(period-10, period) : null;
   }
 }

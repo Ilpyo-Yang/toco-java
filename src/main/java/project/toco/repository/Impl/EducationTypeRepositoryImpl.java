@@ -51,11 +51,11 @@ public class EducationTypeRepositoryImpl implements EducationTypeCustom {
   }
 
   private BooleanExpression mainEq(String main) {
-    return main!=null ? educationType.main.eq(main) : null;
+    return !main.isEmpty() ? educationType.main.eq(main) : null;
   }
 
   private BooleanExpression subEq(String sub) {
-    return sub!=null ? educationType.uuid.eq(sub) : null;
+    return !sub.isEmpty() ? educationType.uuid.eq(sub) : null;
   }
 
 }

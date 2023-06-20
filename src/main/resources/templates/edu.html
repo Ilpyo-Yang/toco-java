@@ -26,7 +26,13 @@
                     <div class="filter">
                         <span class="sector">수강기간</span>
                         <div class="form-check">
-                            <input class="form-check-input" type="radio" name="periodRadio" id="period1" value="10" checked onchange="func_list()">
+                            <input class="form-check-input" type="radio" name="periodRadio" id="period0" value="all" checked onchange="func_list()">
+                            <label class="form-check-label" for="period0">
+                                전체
+                            </label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="periodRadio" id="period1" value="10" onchange="func_list()">
                             <label class="form-check-label" for="period1">
                                 10일 미만
                             </label>
@@ -53,7 +59,13 @@
                     <div class="filter">
                         <span class="sector">평점</span>
                         <div class="form-check">
-                            <input class="form-check-input" type="radio" name="starRadio" id="star5" value="5" checked onchange="func_list()">
+                            <input class="form-check-input" type="radio" name="starRadio" id="star0" value="all" checked onchange="func_list()">
+                            <label class="form-check-label" for="star0">
+                                전체
+                            </label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="starRadio" id="star5" value="5" onchange="func_list()">
                             <label class="form-check-label" for="star5">
                                 ★★★★★
                             </label>
@@ -86,7 +98,13 @@
                     <div class="filter">
                         <span class="sector">난이도</span>
                         <div class="form-check">
-                            <input class="form-check-input" type="radio" name="levelRadio" id="basic" value="Basic" checked onchange="func_list()">
+                            <input class="form-check-input" type="radio" name="levelRadio" id="all" value="All" checked onchange="func_list()">
+                            <label class="form-check-label" for="all">
+                                전체
+                            </label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="levelRadio" id="basic" value="Basic" onchange="func_list()">
                             <label class="form-check-label" for="basic">
                                 Basic
                             </label>

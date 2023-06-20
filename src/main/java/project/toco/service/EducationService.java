@@ -41,7 +41,7 @@ public class EducationService {
     long score;
     for(EducationDto dto: educationDtoList){
       score = educationScoreRepository.calculateScore(dto.getUuid());
-      if((int)score == eduCondition.getStar()){
+      if((int)score==eduCondition.getStar() || eduCondition.getStar()==0){
         dto.setScore(score);
         scored_educationDtoList.add(dto);
       }

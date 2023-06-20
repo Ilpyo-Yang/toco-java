@@ -39,10 +39,9 @@ public class EducationController {
                             @RequestParam("level") String level,
                             @RequestParam("main") String main,
                             @RequestParam("sub") String sub){
-        if("all".equals(main)) main = null;
-        if("all".equals(sub)) sub = null;
         List<String> type = educationTypeService.findUuid(main, sub);
-        EduCondition eduCondition = new EduCondition(period, star, Level.valueOf(level), type);
+        Level enum_level = level.equals(null)? null : Level.valueOf(level);
+        EduCondition eduCondition = new EduCondition(period, star, enum_level, type);
         return educationService.findAllToDtoWithCondition(eduCondition);
     }
 

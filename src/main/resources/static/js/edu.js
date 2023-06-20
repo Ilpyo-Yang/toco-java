@@ -9,14 +9,20 @@ const template = {
 }
 
 function func_list(){
+  const period = $("input[name='periodRadio']:radio:checked").val();
+  const star = $("input[name='starRadio']:radio:checked").val();
+  const level = $("input[name='levelRadio']:radio:checked").val();
+  const main = $("select[name='main']").val();
+  const sub = $("select[name='sub']").val();
+
   $.ajax({
     url: '/edu/list',
     data: {
-      'period': $("input[name='periodRadio']:radio:checked").val(),
-      'star': $("input[name='starRadio']:radio:checked").val(),
-      'level': $("input[name='levelRadio']:radio:checked").val(),
-      'main': $("select[name='main']").val(),
-      'sub': $("select[name='sub']").val()
+      'period': period=='all' ? 0 : period,
+      'star': star=='all' ? 0 : star,
+      'level': level,
+      'main': main=='all' ? null : main,
+      'sub': sub=='all' ? null : sub
     },
     success: function (data) {
       let str = '';
