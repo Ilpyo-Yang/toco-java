@@ -23,6 +23,7 @@ public class EducationController {
     private final EducationTypeService educationTypeService;
     private final EducationScoreService educationScoreService;
 
+    /* 리스트페이지 */
     @GetMapping(value = {"/edu"})
     public String edu(Model model){
         List<String> mainTypeList = educationTypeService.findMainType();
@@ -35,14 +36,25 @@ public class EducationController {
     public List<EducationDto> eduList(Model model,
                             @RequestParam("period") int period,
                             @RequestParam("star") int star,
+                            @RequestParam("level") String level,
                             @RequestParam("main") String main,
                             @RequestParam("sub") String sub){
         if("all".equals(main)) main = null;
         if("all".equals(sub)) sub = null;
-        EduCondition eduCondition = new EduCondition(period, star, main, sub);
+        List<String> type = educationTypeService.findUuid(main, sub);
+        EduCondition eduCondition = new EduCondition(period, star, Level.valueOf(level), type);
         return educationService.findAllToDto(eduCondition);
     }
 
+    @ResponseBody
+    @GetMapping(value = {"/edu/type/sub"})
+    public List<EducationTypeDto> typeList(Model model, @RequestParam("main") String main){
+        if("all".equals(main)) main = null;
+        return educationTypeService.findTypesToDtoByMain(main);
+    }
+
+
+    /* 상세페이지 */
     @GetMapping(value = {"/eduDetail/{uuid}"})
     public String eduDetail(Model model, @PathVariable(value = "uuid", required = true) String uuid){
         EducationDto education = educationService.findOneEduToDto(uuid);

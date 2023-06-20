@@ -23,7 +23,15 @@ public class EducationTypeService {
     return educationTypeRepository.findTypesToDto();
   }
 
+  public List<EducationTypeDto> findTypesToDtoByMain(String main){
+    return educationTypeRepository.findTypesToDtoByMain(main);
+  }
+
   public List<String> findMainType() {
     return educationTypeRepository.findMainType();
+  }
+
+  public List<String> findUuid(String main, String sub) {
+    return educationTypeRepository.findUuidByMainAndSub(main, sub);
   }
 }

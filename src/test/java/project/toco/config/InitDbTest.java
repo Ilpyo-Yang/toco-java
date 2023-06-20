@@ -87,7 +87,7 @@ public class InitDbTest {
 
     EducationDto educationDto = new EducationDto(null, "초보를 위한 Java",
         "Java를 처음 입문하는 사람들에게 스스로 학습할 수 있는 방법을 알려드립니다.",
-        0, 0, typeList.get(0).getUuid(), Level.Basic, null, null);
+        0, 0, 0, "67373590-8373-4697-92a0-23831f924b87", Level.Basic, null, null);
     String education_uuid = educationService.create(educationDto, list);
     assert educationService.findById(education_uuid).getType().equals(typeList.get(0).getUuid());
   }

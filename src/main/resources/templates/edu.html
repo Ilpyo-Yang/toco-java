@@ -83,10 +83,31 @@
                             </label>
                         </div>
                     </div>
+                    <div class="filter">
+                        <span class="sector">난이도</span>
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="levelRadio" id="basic" value="Basic" checked onchange="func_list()">
+                            <label class="form-check-label" for="basic">
+                                Basic
+                            </label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="levelRadio" id="challenge" value="Challenge" onchange="func_list()">
+                            <label class="form-check-label" for="challenge">
+                                Challenge
+                            </label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="levelRadio" id="export" value="Expert" onchange="func_list()">
+                            <label class="form-check-label" for="export">
+                                Expert
+                            </label>
+                        </div>
+                    </div>
                 </div>
             </div>
             <div class="col-9">
-                <select class="form-select form-select-sm" name="main" aria-label=".form-select-sm example" onchange="func_list()">
+                <select class="form-select form-select-sm" name="main" aria-label=".form-select-sm example" onchange="func_sub();func_list();">
                     <option value="all" selected>메인 카테고리 전체</option>
                     <th:block th:each="type:${mainTypeList}">
                         <option th:value="${type}" th:text="${type}"></option>

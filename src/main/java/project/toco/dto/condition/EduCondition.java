@@ -1,9 +1,11 @@
 package project.toco.dto.condition;
 
+import java.util.List;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import project.toco.entity.Level;
 
 @Getter
 @Setter
@@ -12,6 +14,6 @@ import lombok.Setter;
 public class EduCondition {
   private int period;
   private int star;
-  private String main;
-  private String sub;  // type_uuid
+  private Level level;
+  private List<String> type;
 }
