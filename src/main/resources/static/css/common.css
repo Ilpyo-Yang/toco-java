@@ -21,6 +21,14 @@
     width: 5vw;
 }
 
+/* 탭 */
+.tab{
+    margin-right: 0.5rem;
+}
+.tab:hover{
+    font-weight: bold;
+}
+
 /* 화면 */
 @font-face {
     src : url("../font/NanumSquareRoundR.ttf");
