@@ -1,8 +1,11 @@
 package project.toco.service;
 
+import java.util.List;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import project.toco.dto.EducationContentDto;
+import project.toco.dto.EducationDto;
 import project.toco.entity.Education;
 import project.toco.entity.EducationContent;
 import project.toco.repository.EducationContentRepository;
@@ -20,4 +23,7 @@ public class EducationContentService {
     return educationContentRepository.getNextUuid(nextChapter, education);
   }
 
+  public List<EducationContentDto> findAllToDto() {
+    return educationContentRepository.findAllToDto();
+  }
 }

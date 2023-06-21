@@ -48,8 +48,8 @@
                             <span class="section">요즘 인기있는 프로그램</span>
                             <span class="pointer more" onclick="func_move('edu')">+ more</span>
                         </div>
-                        <ul class="list-group list-group-flush">
-                            <li class="list-group-item pointer" th:each="edu:${topList}" th:onclick="func_move('eduDetail/'+${edu.getUuid()})">
+                        <ul class="list-group list-group-flush" th:each="edu:${topList}">
+                            <li class="list-group-item pointer eduDetail" th:id="${edu.getUuid()}">
                                 <span class="name" th:text="${edu.getName()}"></span>
                                 <span class="badge bg-secondary" th:text="|${edu.getScore()}점|"></span>
                                 <span class="badge bg-secondary" th:text="|${edu.getPeriod()}일|"></span>

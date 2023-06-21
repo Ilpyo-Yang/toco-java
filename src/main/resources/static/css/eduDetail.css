@@ -7,12 +7,12 @@
 
 /* 서비스 소개 */
 .program{
-
+    padding-right: 1vw;
 }
 .name{
     color: #d25726;
     font-weight: bold;
-    font-size: 1.1rem;
+    font-size: 1.3rem;
 }
 .badge{
     float: right;
@@ -23,6 +23,19 @@
 .intro{
     margin-top: 1vh;
     display: block;
+    font-size: 0.9rem;
+}
+.sector{
+    border-bottom: 0.01rem solid #d25726;
+    margin: 5vh 0 3vh 0;
+}
+.contains{
+    margin: 2vh 0;
+    word-break:keep-all;
+}
+.contains > span:first-child{
+    margin-bottom: 1vh;
+    font-size: 0.9rem;
 }
 
 

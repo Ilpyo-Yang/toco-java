@@ -24,7 +24,9 @@ public class EducationService {
   private final EducationScoreRepository educationScoreRepository;
 
   public EducationDto findOneEduToDto(String uuid){
-    return educationRepository.findOneEduToDto(uuid);
+    EducationDto dto = educationRepository.findOneEduToDto(uuid);
+    dto.setScore(educationScoreRepository.calculateScore(dto.getUuid()));
+    return dto;
   }
 
   public List<EducationDto> findAllToDto() {

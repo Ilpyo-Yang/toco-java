@@ -12,7 +12,7 @@ import project.toco.dto.EducationDto;
 import project.toco.dto.EducationTypeDto;
 import project.toco.dto.condition.EduCondition;
 import project.toco.entity.Level;
-import project.toco.service.EducationScoreService;
+import project.toco.service.EducationContentService;
 import project.toco.service.EducationService;
 import project.toco.service.EducationTypeService;
 
@@ -21,7 +21,7 @@ import project.toco.service.EducationTypeService;
 public class EducationController {
     private final EducationService educationService;
     private final EducationTypeService educationTypeService;
-    private final EducationScoreService educationScoreService;
+    private final EducationContentService educationContentService;
 
     /* 리스트페이지 */
     @GetMapping(value = {"/edu"})
@@ -52,12 +52,11 @@ public class EducationController {
         return educationTypeService.findTypesToDtoByMain(main);
     }
 
-
     /* 상세페이지 */
     @GetMapping(value = {"/eduDetail/{uuid}"})
-    public String eduDetail(Model model, @PathVariable(value = "uuid", required = true) String uuid){
-        EducationDto education = educationService.findOneEduToDto(uuid);
-        model.addAttribute("education", education);
+    public String eduDetail(Model model, @PathVariable("uuid") String uuid){
+        model.addAttribute("dto", educationService.findOneEduToDto(uuid));
+        model.addAttribute("contents", educationContentService.findAllToDto());
         return "eduDetail";
     }
 }

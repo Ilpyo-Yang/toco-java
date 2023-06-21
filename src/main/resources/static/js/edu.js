@@ -3,7 +3,7 @@ $(function(){
 });
 
 const template = {
-  eduList: '<ul class="list-group list-group-flush"><li class="list-group-item pointer" onclick="func_move({0})"><span class="name">{1}</span><span class="badge bg-secondary">{2}</span><span class="badge bg-secondary">{3}</span><span class="badge bg-secondary">{4}</span><br><span class="intro">{5}</span></li></ul>',
+  eduList: '<ul class="list-group list-group-flush"><li class="list-group-item pointer eduDetail" id="{0}"><span class="name">{1}</span><span class="badge bg-secondary">{2}</span><span class="badge bg-secondary">{3}</span><span class="badge bg-secondary">{4}</span><br><span class="intro">{5}</span></li></ul>',
   subTypeOption: '<option value="all" selected>세부 카테고리 전체</option>',
   subTypeList: '<option value="{0}">{1}</option>'
 }
@@ -27,7 +27,7 @@ function func_list(){
     success: function (data) {
       let str = '';
       $.each(data, function(idx, val) {
-        str += String.Format(template.eduList, '/eduDetail/'+val.uuid, val.name, val.score+'점', val.period+'일', val.level, val.intro);
+        str += String.Format(template.eduList, val.uuid, val.name, val.score+'점', val.period+'일', val.level, val.intro);
       });
       $(".recommended").get(0).innerHTML = str;
     },
