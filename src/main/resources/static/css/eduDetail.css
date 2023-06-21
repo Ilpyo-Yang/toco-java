@@ -31,7 +31,6 @@
 }
 .contains{
     margin: 2vh 0;
-    word-break:keep-all;
 }
 .contains > span:first-child{
     margin-bottom: 1vh;

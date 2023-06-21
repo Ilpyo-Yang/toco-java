@@ -53,6 +53,7 @@ body{
     border-radius: 30px;
     box-shadow: 2px 2px 2px 2px #d25726;
     text-align: center;
+    word-break:keep-all;
 }
 
 
