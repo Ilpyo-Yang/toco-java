@@ -43,6 +43,7 @@ public class InitDbTest {
     educationTypeService.create("CS", "Architecture");
     educationTypeService.create("Backend", "Java");
     educationTypeService.create("Backend", "Python");
+    educationTypeService.create("Frontend", "React");
     List<EducationTypeDto> typeList = educationTypeService.findTypesToDto();
     assert typeList.size()==4;
   }
@@ -53,6 +54,9 @@ public class InitDbTest {
     String uuid = memberService.create(form);
     Member member = memberService.findById(uuid);
     assert member.getName().equals("rosie");
+
+    form = new SignupForm("john", "john@gmail.com", "1234", "USER");
+    uuid = memberService.create(form);
   }
 
   @Test
