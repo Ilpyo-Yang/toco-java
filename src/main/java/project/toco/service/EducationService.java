@@ -12,6 +12,7 @@ import project.toco.dto.EducationDto;
 import project.toco.dto.condition.EduCondition;
 import project.toco.entity.Education;
 import project.toco.entity.EducationContent;
+import project.toco.entity.Level;
 import project.toco.repository.EducationRepository;
 import project.toco.repository.EducationScoreRepository;
 

@@ -1,5 +1,6 @@
 package project.toco.repository.Impl;
 
+import static io.jsonwebtoken.lang.Strings.hasText;
 import static project.toco.entity.QEducation.education;
 import static project.toco.entity.QEducationType.educationType;
 
@@ -51,11 +52,11 @@ public class EducationTypeRepositoryImpl implements EducationTypeCustom {
   }
 
   private BooleanExpression mainEq(String main) {
-    return !main.isEmpty() ? educationType.main.eq(main) : null;
+    return hasText(main) ? educationType.main.eq(main) : null;
   }
 
   private BooleanExpression subEq(String sub) {
-    return !sub.isEmpty() ? educationType.uuid.eq(sub) : null;
+    return hasText(sub) ? educationType.uuid.eq(sub) : null;
   }
 
 }

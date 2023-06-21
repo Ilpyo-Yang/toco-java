@@ -1,5 +1,6 @@
 package project.toco.repository.Impl;
 
+import static io.jsonwebtoken.lang.Strings.hasText;
 import static project.toco.entity.QEducation.education;
 
 import com.querydsl.core.types.Projections;
@@ -59,7 +60,7 @@ public class EducationRepositoryImpl implements EducationCustom {
   }
 
   private BooleanExpression uuidEq(String uuid) {
-    return uuid!=null ? education.uuid.eq(uuid) : null;
+    return hasText(uuid) ? education.uuid.eq(uuid) : null;
   }
 
   private BooleanExpression typeEq(List<String> type) {
