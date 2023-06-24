@@ -11,4 +11,5 @@ import project.toco.repository.custom.MemberRepositoryCustom;
 public interface MemberRepository extends JpaRepository<Member, String>, MemberRepositoryCustom {
   MemberDto findMemberToDto(String uuid);
   List<MemberDto> findMembersToDto();
+  Member findByEmail(String email);
 }

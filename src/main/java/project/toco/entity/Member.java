@@ -3,29 +3,37 @@ package project.toco.entity;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
+import jakarta.persistence.Convert;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.OneToMany;
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
+import org.springframework.security.core.userdetails.UserDetails;
+import project.toco.security.ColumnEncryptor;
 
 @Entity
 @Getter
 @Setter
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
-public class Member extends BaseTimeEntity {
+public class Member extends BaseTimeEntity implements UserDetails {
   @Id
   @GeneratedValue(strategy = GenerationType.UUID)
   @Column(name="member_uuid")
   private String uuid;
+  @Convert(converter = ColumnEncryptor.class)
   private String name;
   @Column(unique = true)
+  @Convert(converter = ColumnEncryptor.class)
   private String email;
   private String password;
   private String role;
@@ -48,5 +56,42 @@ public class Member extends BaseTimeEntity {
       member.addProgress(progress);
     }
     return member;
+  }
+
+  @Override
+  public Collection<? extends GrantedAuthority> getAuthorities() {
+    List<SimpleGrantedAuthority> list = new ArrayList<>();
+    list.add(new SimpleGrantedAuthority(role));
+    return list;
+  }
+
+  @Override
+  public String getUsername() {
+    return uuid;
+  }
+
+  @Override
+  public String getPassword() {
+    return password;
+  }
+
+  @Override
+  public boolean isAccountNonExpired() {
+    return true;
+  }
+
+  @Override
+  public boolean isAccountNonLocked() {
+    return true;
+  }
+
+  @Override
+  public boolean isCredentialsNonExpired() {
+    return true;
+  }
+
+  @Override
+  public boolean isEnabled() {
+    return true;
   }
 }

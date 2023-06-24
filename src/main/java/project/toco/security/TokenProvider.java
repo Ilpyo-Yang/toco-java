@@ -31,12 +31,12 @@ public class TokenProvider {
     this.key = Keys.hmacShaKeyFor(keyBytes);
   }
 
-  public String generateToken(String uuid, String role) {
-    Claims claims = Jwts.claims().setSubject(uuid);
-    claims.put("role", role);
+  public String generateToken(Authentication authentication) {
+    List<GrantedAuthority> authorities = (List<GrantedAuthority>) authentication.getAuthorities();
     Date now = new Date();
     return Jwts.builder()
-        .setClaims(claims)
+        .claim("authorities", authentication)
+        .claim("role", authorities.get(0).getAuthority())
         .setIssuedAt(now)
         .setExpiration(new Date(now.getTime() + tokenValidTime))
         .signWith(SignatureAlgorithm.HS256, secretKey)

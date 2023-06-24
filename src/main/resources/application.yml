@@ -4,10 +4,13 @@ spring:
         url: jdbc:mysql://localhost:3306/today_coding?
         username: root
         password: 1234abcd!
+        column:
+            encrypt:
+                    key: VlwEyVBsYt9V7zq57TejMnVUyzblYcfPQye08f7MGVA9XkHa
 
     jpa:
         hibernate:
-            ddl-auto: update
+            ddl-auto: create
 
     thymeleaf:
         encoding: UTF-8
