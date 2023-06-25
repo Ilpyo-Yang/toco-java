@@ -50,12 +50,12 @@ public class InitDbTest {
 
   @Test
   public void intMemberDb() {
-    SignupForm form = new SignupForm("rosie", "rosie@gmail.com", "1234", "USER");
+    SignupForm form = new SignupForm("rosie", "rosie@gmail.com", "1234", "MEMBER");
     String uuid = memberService.create(form);
     Member member = memberService.findById(uuid);
     assert member.getName().equals("rosie");
 
-    form = new SignupForm("john", "john@gmail.com", "1234", "USER");
+    form = new SignupForm("john", "john@gmail.com", "1234", "MEMBER");
     uuid = memberService.create(form);
   }
 

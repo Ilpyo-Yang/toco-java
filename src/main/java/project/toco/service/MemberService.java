@@ -49,7 +49,7 @@ public class MemberService implements UserDetailsService {
   }
 
   public String create(SignupForm form){
-    Member member = Member.createMember(form.getName(), form.getEmail(), form.getPassword(), form.getRole());
+    Member member = Member.createMember(form.getName(), form.getEmail(), form.getPassword(), "MEMBER");
     memberRepository.save(member);
     return member.getUuid();
   }

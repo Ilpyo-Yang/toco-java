@@ -7,6 +7,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestAttribute;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import project.toco.dto.form.SignupForm;
@@ -34,9 +35,9 @@ public class MemberController {
     }
 
     @PostMapping(value = {"/signup"})
-    public String signup(@RequestParam("form") SignupForm form){
+    public String signup(SignupForm form){
         memberService.create(form);
-        return "/";
+        return "index";
     }
 
     @GetMapping(value = {"/logout"})

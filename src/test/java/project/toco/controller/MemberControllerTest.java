@@ -17,10 +17,9 @@ class MemberControllerTest {
   @Test
   @Rollback(false)
   public void signupTest() {
-    SignupForm form = new SignupForm("test21", "test21@gmail.com", "1234", "USER");
+    SignupForm form = new SignupForm("test17", "test17@gmail.com", "1234", "MEMBER");
     String uuid = memberService.create(form);
-    // @PostConstruct 적용여부 확인필요
-    assert memberService.findById(uuid).getName().equals("test21");
+    assert memberService.findById(uuid).getName().equals("test17");
   }
 
   @Test

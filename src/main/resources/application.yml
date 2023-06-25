@@ -6,11 +6,11 @@ spring:
         password: 1234abcd!
         column:
             encrypt:
-                    key: VlwEyVBsYt9V7zq57TejMnVUyzblYcfPQye08f7MGVA9XkHa
+                    key: VlwEyVBsYt9V7zq57TejMnVUyzblYcfP
 
     jpa:
         hibernate:
-            ddl-auto: create
+            ddl-auto: update
 
     thymeleaf:
         encoding: UTF-8
