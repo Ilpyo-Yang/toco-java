@@ -1,6 +1,5 @@
 package project.toco.security;
 
-import com.fasterxml.jackson.databind.ser.Serializers.Base;
 import jakarta.persistence.AttributeConverter;
 import jakarta.persistence.Converter;
 import java.nio.charset.StandardCharsets;
