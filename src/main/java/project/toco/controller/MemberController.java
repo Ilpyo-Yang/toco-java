@@ -6,6 +6,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import project.toco.dto.form.SignupForm;
 import project.toco.service.MemberService;
 
@@ -39,6 +40,12 @@ public class MemberController {
     @GetMapping(value = {"/logout"})
     public void logout(){
 
+    }
+
+    @ResponseBody
+    @GetMapping("member/existEmail")
+    public String existEmail(@RequestParam("email") String email){
+        return memberService.existEmail(email);
     }
 
 }

@@ -19,14 +19,6 @@ public class ColumnEncryptor implements AttributeConverter<String, String> {
   private Cipher encryptCipher;
   private Cipher decryptCipher;
 
-  /*@PostConstruct
-  public void init() throws Exception{
-    encryptCipher = Cipher.getInstance("AES");
-    encryptCipher.init(Cipher.ENCRYPT_MODE, generateKey(key));
-    decryptCipher = Cipher.getInstance("AES");
-    decryptCipher.init(Cipher.DECRYPT_MODE, generateKey(key));
-  }*/
-
   @Override
   public String convertToDatabaseColumn(String attribute) {
     try {
@@ -58,15 +50,5 @@ public class ColumnEncryptor implements AttributeConverter<String, String> {
       e.printStackTrace();
     }
     return null;
-
-    /*try {
-      final byte[] finalKey = new byte[16];
-      int i = 0;
-      for(byte b : key.getBytes(encoding))
-        finalKey[i++%16] ^= b;
-      return new SecretKeySpec(finalKey, "AES");
-    } catch(UnsupportedEncodingException e) {
-      throw new RuntimeException(e);
-    }*/
   }
 }

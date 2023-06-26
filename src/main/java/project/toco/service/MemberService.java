@@ -47,12 +47,14 @@ public class MemberService implements UserDetailsService {
     return memberRepository.findAll();
   }
 
+  @Transactional
   public String create(SignupForm form){
-    Member member = Member.createMember(form.getName(), form.getEmail(), form.getPassword(), "MEMBER");
+    Member member = Member.createMember(form.getName(), form.getEmail(), passwordEncoder.encode(form.getPassword()), "MEMBER");
     memberRepository.save(member);
     return member.getUuid();
   }
 
+  @Transactional
   public String update(Member m){
     Member member = memberRepository.save(m);
     return member.getUuid();
@@ -62,5 +64,9 @@ public class MemberService implements UserDetailsService {
     UsernamePasswordAuthenticationToken authenticationToken = new UsernamePasswordAuthenticationToken(memberRepository.findByEmail(email).getUuid(), password);
     Authentication authentication = authenticationManagerBuilder.getObject().authenticate(authenticationToken);
     return tokenProvider.generateToken(authentication);
+  }
+
+  public String existEmail(String email) {
+    return memberRepository.findByEmail(email)==null? "" : memberRepository.findByEmail(email).getUuid();
   }
 }
