@@ -19,22 +19,16 @@ public class MemberRepositoryImpl implements MemberRepositoryCustom {
   private final JPAQueryFactory jpaQueryFactory;
 
   @Override
-  public MemberDto findMemberToDto(String uuid) {
+  public MemberDto findByEmail(String uuid) {
     return jpaQueryFactory
-        .select(Projections.fields(MemberDto.class, member.uuid, educationType.main, educationType.sub))
+        .select(Projections.fields(MemberDto.class, member.uuid, member.name, member.email, member.password, member.role,
+            member.createdDate, member.lastModifiedDate))
         .from(member)
-        .where(uuidEq(uuid))
+        .where(emailEq(uuid))
         .fetchOne();
   }
-  @Override
-  public List<MemberDto> findMembersToDto() {
-    return jpaQueryFactory
-        .select(Projections.fields(MemberDto.class, member.uuid, educationType.main, educationType.sub))
-        .from(member)
-        .fetch();
-  }
 
-  private BooleanExpression uuidEq(String uuid) {
-    return hasText(uuid) ? member.uuid.eq(uuid) : null;
+  private BooleanExpression emailEq(String email) {
+    return hasText(email) ? member.email.eq(email) : null;
   }
 }

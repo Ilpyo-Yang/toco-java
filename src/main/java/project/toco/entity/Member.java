@@ -60,14 +60,12 @@ public class Member extends BaseTimeEntity implements UserDetails {
 
   @Override
   public Collection<? extends GrantedAuthority> getAuthorities() {
-    List<SimpleGrantedAuthority> list = new ArrayList<>();
-    list.add(new SimpleGrantedAuthority(role));
-    return list;
+    return List.of(new SimpleGrantedAuthority(role));
   }
 
   @Override
   public String getUsername() {
-    return uuid;
+    return email;
   }
 
   @Override

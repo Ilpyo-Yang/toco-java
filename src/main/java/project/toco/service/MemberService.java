@@ -2,6 +2,7 @@ package project.toco.service;
 
 import java.util.List;
 import lombok.RequiredArgsConstructor;
+import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.core.Authentication;
@@ -11,6 +12,7 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import project.toco.dto.MemberDto;
 import project.toco.dto.form.SignupForm;
 import project.toco.entity.Member;
 import project.toco.repository.MemberRepository;
@@ -41,12 +43,6 @@ public class MemberService implements UserDetailsService {
         .build();
   }
 
-  public Member findById(String uuid){ return memberRepository.findById(uuid).get(); }
-
-  public List<Member> findAll(){
-    return memberRepository.findAll();
-  }
-
   @Transactional
   public String create(SignupForm form){
     Member member = Member.createMember(form.getName(), form.getEmail(), passwordEncoder.encode(form.getPassword()), "MEMBER");
@@ -61,6 +57,10 @@ public class MemberService implements UserDetailsService {
   }
 
   public String login(String email, String password) {
+    MemberDto memberDto = memberRepository.findByEmail(email);
+    if(memberDto==null) return "";
+    if (!passwordEncoder.matches(password, memberDto.getPassword())) return "";
+
     UsernamePasswordAuthenticationToken authenticationToken = new UsernamePasswordAuthenticationToken(memberRepository.findByEmail(email).getUuid(), password);
     Authentication authentication = authenticationManagerBuilder.getObject().authenticate(authenticationToken);
     return tokenProvider.generateToken(authentication);
@@ -69,4 +69,11 @@ public class MemberService implements UserDetailsService {
   public String existEmail(String email) {
     return memberRepository.findByEmail(email)==null? "" : memberRepository.findByEmail(email).getUuid();
   }
+
+  /* test */
+  public Member findById(String uuid){ return memberRepository.findById(uuid).get(); }
+  public List<Member> findAll(){
+    return memberRepository.findAll();
+  }
+
 }

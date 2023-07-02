@@ -9,7 +9,5 @@ import project.toco.repository.custom.MemberRepositoryCustom;
 
 @Repository
 public interface MemberRepository extends JpaRepository<Member, String>, MemberRepositoryCustom {
-  MemberDto findMemberToDto(String uuid);
-  List<MemberDto> findMembersToDto();
-  Member findByEmail(String email);
+  MemberDto findByEmail(String email);
 }

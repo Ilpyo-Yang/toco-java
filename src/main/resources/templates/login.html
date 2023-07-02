@@ -13,7 +13,7 @@
         <div class="row">
             <span class="login bold" onclick="func_move('/login')">Login</span>
             <div class="col">
-                <form id="form" th:action="@{/login}" th:method="post">
+                <form th:id="form" th:action="@{/login}" th:method="post">
                     <input type="email" id="email" name="email" placeholder="example@google.com"/>
                     <input type="password" id="password" name="password" placeholder="············"/>
                     <button type="button" id="submit_btn" class="btn submit_btn">Login</button>

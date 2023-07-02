@@ -1,7 +1,9 @@
 let exptext = /^[A-Za-z0-9_\.\-]+@[A-Za-z0-9\-]+\.[A-Za-z0-9\-]+/;
-let b = false;
+let b;
 
 $(document).on('click','#submit_btn',function(){
+    b = false;
+
     if ($('#email').val()==='') {
         $(".warning").get(0).innerHTML = '이메일을 입력해주세요.';
         b = true;
@@ -13,8 +15,10 @@ $(document).on('click','#submit_btn',function(){
         b = true;
     }
 
+    console.log(b);
+
     if(b) return false;
     else{
-        $("#form").submit();
+        $("#form").get(0).submit();
     }
 });
