@@ -3,6 +3,7 @@ package project.toco.security;
 import io.jsonwebtoken.*;
 import io.jsonwebtoken.io.Decoders;
 import io.jsonwebtoken.security.Keys;
+import java.util.function.Function;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
@@ -31,17 +32,24 @@ public class TokenProvider {
     this.key = Keys.hmacShaKeyFor(keyBytes);
   }
 
-  public String generateToken(Authentication authentication) {
-    List<GrantedAuthority> authorities = (List<GrantedAuthority>) authentication.getAuthorities();
-    Date now = new Date();
+  public String generateToken(UserDetails userDetails){
+    return generateToken(new HashMap<>(), userDetails);
+  }
+
+  public String generateToken(Map<String, Object> extraClaims, UserDetails userDetails) {
+    return buildToken(extraClaims, userDetails, tokenValidTime);
+  }
+
+  private String buildToken(Map<String, Object> extraClaims, UserDetails userDetails, long tokenValidTime) {
     return Jwts.builder()
-        .claim("authorities", authentication)
-        .claim("role", authorities.get(0).getAuthority())
-        .setIssuedAt(now)
-        .setExpiration(new Date(now.getTime() + tokenValidTime))
-        .signWith(SignatureAlgorithm.HS256, secretKey)
+        .setClaims(extraClaims)
+        .setSubject(userDetails.getUsername())
+        .setIssuedAt(new Date(System.currentTimeMillis()))
+        .setExpiration(new Date(System.currentTimeMillis() + tokenValidTime))
+        .signWith(key, SignatureAlgorithm.HS256)
         .compact();
   }
+
   public Authentication getAuthentication(String accessToken) {
     Claims claims = parseClaims(accessToken);
 
@@ -58,6 +66,14 @@ public class TokenProvider {
     return new UsernamePasswordAuthenticationToken(principal, "", authorities);
   }
 
+  /*
+  // UserDetails 순환 issue
+  public boolean validateToken(String token, UserDetails userDetails) {
+    String username = extractUsername(token);
+    return username.equals(userDetails.getUsername()) && extractExpiration(token).before(new Date());
+  }
+  */
+
   public boolean validateToken(String token) {
     try {
       Jwts.parserBuilder().setSigningKey(key).build().parseClaimsJws(token);
@@ -73,6 +89,28 @@ public class TokenProvider {
     }
     return false;
   }
+
+  private Date extractExpiration(String token) {
+    return extractClaim(token, Claims::getExpiration);
+  }
+
+  public String extractUsername(String token) {
+    return extractClaim(token, Claims::getSubject);
+  }
+
+  private <T> T extractClaim(String token, Function<Claims, T> claimsResolver) {
+    return claimsResolver.apply(extractAllClaims(token));
+  }
+
+  private Claims extractAllClaims(String token) {
+    return Jwts
+        .parserBuilder()
+        .setSigningKey(key)
+        .build()
+        .parseClaimsJws(token)
+        .getBody();
+  }
+
 
   private Claims parseClaims(String accessToken) {
     try {

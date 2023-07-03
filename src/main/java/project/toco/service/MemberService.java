@@ -2,17 +2,13 @@ package project.toco.service;
 
 import java.util.List;
 import lombok.RequiredArgsConstructor;
-import org.springframework.security.authentication.BadCredentialsException;
-import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
-import org.springframework.security.core.Authentication;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-import project.toco.dto.MemberDto;
 import project.toco.dto.form.SignupForm;
 import project.toco.entity.Member;
 import project.toco.repository.MemberRepository;
@@ -22,10 +18,8 @@ import project.toco.security.TokenProvider;
 @Transactional(readOnly = true)
 @RequiredArgsConstructor
 public class MemberService implements UserDetailsService {
-  private final AuthenticationManagerBuilder authenticationManagerBuilder;
   private final TokenProvider tokenProvider;
   private final PasswordEncoder passwordEncoder;
-
   private final MemberRepository memberRepository;
 
   @Override
@@ -57,13 +51,10 @@ public class MemberService implements UserDetailsService {
   }
 
   public String login(String email, String password) {
-    MemberDto memberDto = memberRepository.findByEmail(email);
-    if(memberDto==null) return "";
-    if (!passwordEncoder.matches(password, memberDto.getPassword())) return "";
-
-    UsernamePasswordAuthenticationToken authenticationToken = new UsernamePasswordAuthenticationToken(memberRepository.findByEmail(email).getUuid(), password);
-    Authentication authentication = authenticationManagerBuilder.getObject().authenticate(authenticationToken);
-    return tokenProvider.generateToken(authentication);
+    Member member = memberRepository.findByEmail(email);
+    if(member==null) return "";
+    if (!passwordEncoder.matches(password, member.getPassword())) return "";
+    return tokenProvider.generateToken(member);
   }
 
   public String existEmail(String email) {
@@ -71,7 +62,10 @@ public class MemberService implements UserDetailsService {
   }
 
   /* test */
-  public Member findById(String uuid){ return memberRepository.findById(uuid).get(); }
+  public Member findById(String uuid) throws NoSuchFieldException {
+    return memberRepository.findById(uuid).orElseThrow(() -> new NoSuchFieldException("일치하는 사용자가 없습니다."));
+  }
+  public Member findByEmail(String email){ return memberRepository.findByEmail(email); }
   public List<Member> findAll(){
     return memberRepository.findAll();
   }

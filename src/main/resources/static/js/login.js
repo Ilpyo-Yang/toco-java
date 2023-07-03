@@ -15,10 +15,28 @@ $(document).on('click','#submit_btn',function(){
         b = true;
     }
 
-    console.log(b);
-
     if(b) return false;
     else{
-        $("#form").get(0).submit();
+        func_login();
     }
 });
+
+function func_login(){
+    $.ajax({
+        url: '/login',
+        method: 'post',
+        data: {
+            'email': $('#email').val(),
+            'password': $('#password').val()
+        },
+        success: function (data) {
+            if(data=='failed'){
+                $('.warning').innerText('일치하는 회원정보가 없습니다. 다시 로그인해주세요.');
+            }
+            else location.href = '/';
+        },
+        error: function (report, status, error) {
+            alert("code: " + report.status + "\n" + "message: " + report.responseText + "\n" + "error: " + error);
+        }
+    });
+}

@@ -49,7 +49,7 @@ public class InitDbTest {
   }
 
   @Test
-  public void intMemberDb() {
+  public void intMemberDb() throws NoSuchFieldException {
     SignupForm form = new SignupForm("rosie", "rosie@gmail.com", "1234", "MEMBER");
     String uuid = memberService.create(form);
     Member member = memberService.findById(uuid);

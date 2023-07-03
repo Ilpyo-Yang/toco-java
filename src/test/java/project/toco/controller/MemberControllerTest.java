@@ -16,7 +16,7 @@ class MemberControllerTest {
 
   @Test
   @Rollback(false)
-  public void signupTest() {
+  public void signupTest() throws NoSuchFieldException {
     SignupForm form = new SignupForm("test14", "test14@gmail.com", "1234", "MEMBER");
     String uuid = memberService.create(form);
     assert memberService.findById(uuid).getName().equals("test14");

@@ -6,6 +6,7 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.method.configuration.EnableMethodSecurity;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
+import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.factory.PasswordEncoderFactories;
@@ -45,23 +46,25 @@ public class SecurityConfig {
   @Bean
   public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
     return http
-              .authorizeHttpRequests(authorize -> authorize
-                  .requestMatchers("/", "/css/**", "/js/**", "/font/**", "/image/**").permitAll()
-                  .requestMatchers("/info", "/login", "/signup", "/logout", "/edu/**", "/eduDetail/**", "/member/**").permitAll()
-                  .requestMatchers("/user/**").hasRole("USER")
-                  .requestMatchers("/admin/**").hasRole("ADMIN")
-                  .anyRequest().authenticated()
-              )
-              .addFilterBefore(new TokenFilter(tokenProvider), UsernamePasswordAuthenticationFilter.class)
-              .formLogin(formLogin -> formLogin
-                  .loginPage("/login")
-                  .permitAll()
-              )
-              .logout(logout -> logout
-                  .logoutUrl("/logout")
-                  .permitAll()
-              )
-              .build();
+        .csrf().disable()
+        .authorizeHttpRequests(authorize -> authorize
+            .requestMatchers("/", "/css/**", "/js/**", "/font/**", "/image/**").permitAll()
+            .requestMatchers("/login", "/signup", "/logout").permitAll()
+            .requestMatchers( "/info", "/edu/**", "/eduDetail/**", "/member/**").permitAll()
+            .requestMatchers("/user/**").hasRole("USER")
+            .requestMatchers("/admin/**").hasRole("ADMIN")
+            .anyRequest().authenticated()
+        )
+        .sessionManagement()
+        .sessionCreationPolicy(SessionCreationPolicy.STATELESS)
+        .and()
+        .addFilterBefore(new TokenFilter(tokenProvider), UsernamePasswordAuthenticationFilter.class)
+        .logout()
+        .logoutUrl("/logout")
+        .deleteCookies("JSESSIONID", "AUTHTOKEN")
+        .logoutSuccessUrl("/")
+        .and()
+        .build();
   }
 
 }
