@@ -2,7 +2,9 @@ package project.toco.service;
 
 import java.util.List;
 import lombok.RequiredArgsConstructor;
-import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
@@ -23,15 +25,14 @@ public class MemberService implements UserDetailsService {
   private final MemberRepository memberRepository;
 
   @Override
-  public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-    return memberRepository.findById(username)
-        .map(this::createUserDetails)
-        .orElseThrow(() -> new UsernameNotFoundException("해당하는 유저를 찾을 수 없습니다."));
+  public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
+    Member member = memberRepository.findByEmail(email);
+    return userDetailsBuilder(member);
   }
 
   private UserDetails createUserDetails(Member member) {
     return org.springframework.security.core.userdetails.User.builder()
-        .username(member.getUsername())
+        .username(member.getEmail())
         .password(passwordEncoder.encode(member.getPassword()))
         .roles(member.getRole())
         .build();
@@ -41,6 +42,11 @@ public class MemberService implements UserDetailsService {
   public String create(SignupForm form){
     Member member = Member.createMember(form.getName(), form.getEmail(), passwordEncoder.encode(form.getPassword()), "MEMBER");
     memberRepository.save(member);
+    UserDetails user = User.withUsername(member.getEmail())
+                          .password(member.getPassword())
+                          .roles(member.getRole())
+                          .build();
+    doAutoLogin(tokenProvider.generateToken(user));
     return member.getUuid();
   }
 
@@ -52,13 +58,30 @@ public class MemberService implements UserDetailsService {
 
   public String login(String email, String password) {
     Member member = memberRepository.findByEmail(email);
-    if(member==null) return "";
-    if (!passwordEncoder.matches(password, member.getPassword())) return "";
-    return tokenProvider.generateToken(member);
+    UserDetails userDetails = userDetailsBuilder(member);
+    if (member == null)
+      return "";
+    if (!passwordEncoder.matches(password, member.getPassword()))
+      return "";
+    String token = tokenProvider.generateToken(userDetails);
+    doAutoLogin(token);
+    return token;
+  }
+
+  private void doAutoLogin(String token) {
+    Authentication authentication = tokenProvider.getAuthentication(token);
+    SecurityContextHolder.getContext().setAuthentication(authentication);
   }
 
   public String existEmail(String email) {
-    return memberRepository.findByEmail(email)==null? "" : memberRepository.findByEmail(email).getUuid();
+    return memberRepository.findByEmailToDto(email)==null? "" : memberRepository.findByEmailToDto(email).getUuid();
+  }
+
+  public UserDetails userDetailsBuilder(Member member){
+    return User.withUsername(member.getEmail())
+        .password(member.getPassword())
+        .roles(member.getRole())
+        .build();
   }
 
   /* test */

@@ -3,13 +3,14 @@ package project.toco.controller;
 import jakarta.servlet.http.Cookie;
 import jakarta.servlet.http.HttpServletResponse;
 import lombok.RequiredArgsConstructor;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import project.toco.dto.form.SignupForm;
 import project.toco.service.MemberService;
 
@@ -18,7 +19,7 @@ import project.toco.service.MemberService;
 public class MemberController {
     private final MemberService memberService;
 
-    @GetMapping(value = {"/login"})
+    @GetMapping("/login")
     public String login(){
         return "login";
     }
@@ -40,13 +41,13 @@ public class MemberController {
         return "signup";
     }
 
-    @PostMapping(value = {"/signup"})
+    @PostMapping("/signup")
     public String signup(SignupForm form){
         memberService.create(form);
         return "index";
     }
 
-    @GetMapping(value = {"/logout"})
+    @GetMapping("/logout")
     public void logout(){}
 
     @ResponseBody

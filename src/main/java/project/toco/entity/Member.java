@@ -18,6 +18,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
+import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
 import project.toco.security.ColumnEncryptor;
 
@@ -25,7 +26,7 @@ import project.toco.security.ColumnEncryptor;
 @Getter
 @Setter
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
-public class Member extends BaseTimeEntity implements UserDetails {
+public class Member extends BaseTimeEntity {
   @Id
   @GeneratedValue(strategy = GenerationType.UUID)
   @Column(name="member_uuid")
@@ -56,40 +57,5 @@ public class Member extends BaseTimeEntity implements UserDetails {
       member.addProgress(progress);
     }
     return member;
-  }
-
-  @Override
-  public Collection<? extends GrantedAuthority> getAuthorities() {
-    return List.of(new SimpleGrantedAuthority(role));
-  }
-
-  @Override
-  public String getUsername() {
-    return email;
-  }
-
-  @Override
-  public String getPassword() {
-    return password;
-  }
-
-  @Override
-  public boolean isAccountNonExpired() {
-    return true;
-  }
-
-  @Override
-  public boolean isAccountNonLocked() {
-    return true;
-  }
-
-  @Override
-  public boolean isCredentialsNonExpired() {
-    return true;
-  }
-
-  @Override
-  public boolean isEnabled() {
-    return true;
   }
 }

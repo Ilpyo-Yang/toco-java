@@ -33,7 +33,9 @@ public class TokenProvider {
   }
 
   public String generateToken(UserDetails userDetails){
-    return generateToken(new HashMap<>(), userDetails);
+    Map<String,Object> extraClaims = new HashMap<>();
+    extraClaims.put("role", userDetails.getAuthorities());
+    return generateToken(extraClaims, userDetails);
   }
 
   public String generateToken(Map<String, Object> extraClaims, UserDetails userDetails) {
@@ -65,14 +67,6 @@ public class TokenProvider {
     UserDetails principal = new User(claims.getSubject(), "", authorities);
     return new UsernamePasswordAuthenticationToken(principal, "", authorities);
   }
-
-  /*
-  // UserDetails 순환 issue
-  public boolean validateToken(String token, UserDetails userDetails) {
-    String username = extractUsername(token);
-    return username.equals(userDetails.getUsername()) && extractExpiration(token).before(new Date());
-  }
-  */
 
   public boolean validateToken(String token) {
     try {
