@@ -3,8 +3,6 @@ package project.toco.controller;
 import jakarta.servlet.http.Cookie;
 import jakarta.servlet.http.HttpServletResponse;
 import lombok.RequiredArgsConstructor;
-import org.springframework.security.core.Authentication;
-import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -24,16 +22,16 @@ public class MemberController {
         return "login";
     }
 
-    @ResponseBody
-    @PostMapping("/login")
-    public String login(@RequestParam("email") String email,
-                        @RequestParam("password") String password,
-                        HttpServletResponse response){
-        String token = memberService.login(email, password);
-        if(token.isEmpty()){ return "failed";}
-        response.addCookie(new Cookie("AUTHTOKEN", token));
-        return "success";
-    }
+//    @ResponseBody
+//    @PostMapping("/login")
+//    public String login(@RequestParam("email") String email,
+//                        @RequestParam("password") String password,
+//                        HttpServletResponse response){
+//        String token = memberService.login(email, password);
+//        if(token.isEmpty()){ return "failed";}
+//        response.addCookie(new Cookie("AUTHTOKEN", token));
+//        return "success";
+//    }
 
     @GetMapping(value = {"/signup"})
     public String signup(Model model){
@@ -42,13 +40,13 @@ public class MemberController {
     }
 
     @PostMapping("/signup")
-    public String signup(SignupForm form){
-        memberService.create(form);
-        return "index";
+    public String signup(SignupForm form, HttpServletResponse response){
+        response.addCookie(new Cookie("AUTHTOKEN", memberService.create(form)));
+        return "redirect:/";
     }
 
-    @GetMapping("/logout")
-    public void logout(){}
+//    @GetMapping("/logout")
+//    public void logout(){}
 
     @ResponseBody
     @GetMapping("member/existEmail")

@@ -1,13 +1,12 @@
 package project.toco.service;
 
+import java.util.ArrayList;
 import java.util.List;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
-import org.springframework.security.core.userdetails.UserDetailsService;
-import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -19,35 +18,17 @@ import project.toco.security.TokenProvider;
 @Service
 @Transactional(readOnly = true)
 @RequiredArgsConstructor
-public class MemberService implements UserDetailsService {
+public class MemberService {
   private final TokenProvider tokenProvider;
   private final PasswordEncoder passwordEncoder;
   private final MemberRepository memberRepository;
 
-  @Override
-  public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
-    Member member = memberRepository.findByEmail(email);
-    return userDetailsBuilder(member);
-  }
-
-  private UserDetails createUserDetails(Member member) {
-    return org.springframework.security.core.userdetails.User.builder()
-        .username(member.getEmail())
-        .password(passwordEncoder.encode(member.getPassword()))
-        .roles(member.getRole())
-        .build();
-  }
-
   @Transactional
   public String create(SignupForm form){
-    Member member = Member.createMember(form.getName(), form.getEmail(), passwordEncoder.encode(form.getPassword()), "MEMBER");
+    Member member = Member.createMember(form.getName(), form.getEmail(), passwordEncoder.encode(form.getPassword()), "MEMBER", new ArrayList<>());
     memberRepository.save(member);
-    UserDetails user = User.withUsername(member.getEmail())
-                          .password(member.getPassword())
-                          .roles(member.getRole())
-                          .build();
-    doAutoLogin(tokenProvider.generateToken(user));
-    return member.getUuid();
+    UserDetails userDetails = userDetailsBuilder(member);
+    return tokenProvider.generateToken(userDetails);
   }
 
   @Transactional
@@ -64,7 +45,6 @@ public class MemberService implements UserDetailsService {
     if (!passwordEncoder.matches(password, member.getPassword()))
       return "";
     String token = tokenProvider.generateToken(userDetails);
-    doAutoLogin(token);
     return token;
   }
 

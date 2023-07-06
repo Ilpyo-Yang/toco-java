@@ -1,79 +1,63 @@
 package project.toco.config;
 
-import lombok.RequiredArgsConstructor;
+import static org.springframework.security.config.Customizer.withDefaults;
+
+import lombok.AllArgsConstructor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.security.config.annotation.method.configuration.EnableMethodSecurity;
+import org.springframework.security.authentication.dao.DaoAuthenticationProvider;
+import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
-import org.springframework.security.config.http.SessionCreationPolicy;
-import org.springframework.security.core.userdetails.User;
-import org.springframework.security.core.userdetails.UserDetailsService;
-import org.springframework.security.crypto.factory.PasswordEncoderFactories;
-import org.springframework.security.crypto.password.PasswordEncoder;
-import org.springframework.security.provisioning.InMemoryUserDetailsManager;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 import project.toco.security.TokenFilter;
-import project.toco.security.TokenProvider;
+import project.toco.service.AuthService;
 
 @Configuration
+@AllArgsConstructor
 @EnableWebSecurity
-@EnableMethodSecurity
-@RequiredArgsConstructor
+@EnableGlobalMethodSecurity(securedEnabled = true)
 public class SecurityConfig {
-  private final TokenProvider tokenProvider;
-
-  @Bean
-  public PasswordEncoder passwordEncoder() {
-    return PasswordEncoderFactories.createDelegatingPasswordEncoder();
-  }
-
-  @Bean
-  public UserDetailsService userDetailsService(PasswordEncoder passwordEncoder) {
-    InMemoryUserDetailsManager manager = new InMemoryUserDetailsManager();
-    manager.createUser(User.withUsername("user")
-        .password(passwordEncoder.encode("userPass"))
-        .roles("USER")
-        .build());
-    manager.createUser(User.withUsername("admin")
-        .password(passwordEncoder.encode("adminPass"))
-        .roles("USER", "ADMIN")
-        .build());
-    return manager;
-  }
+  private final TokenFilter tokenFilter;
+  private final AuthService authService;
 
   @Bean
   public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
     return http
         .csrf().disable()
-        .authorizeHttpRequests(authorize -> authorize
-            .requestMatchers("/", "/css/**", "/js/**", "/font/**", "/image/**").permitAll()
-            .requestMatchers("/login", "/signup", "/logout").permitAll()
-            .requestMatchers( "/info", "/edu/**", "/eduDetail/**", "/member/**").permitAll()
-            .requestMatchers("/user/**").hasRole("USER")
-            .requestMatchers("/admin/**").hasRole("ADMIN")
-            .anyRequest().authenticated()
-        )
-        .sessionManagement()
-        .sessionCreationPolicy(SessionCreationPolicy.STATELESS)
-        .and()
-        .addFilterBefore(new TokenFilter(tokenProvider), UsernamePasswordAuthenticationFilter.class)
-//        .formLogin()
-//        .loginPage("/login")
-//        .loginProcessingUrl("/login")
-//        .usernameParameter("email")
-//        .passwordParameter("password")
-//        .defaultSuccessUrl("/")
-//        .failureUrl("/login?error=true")
+//        .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS)
 //        .and()
-        .logout()
-        .logoutUrl("/logout")
-        .deleteCookies("AUTHTOKEN")
-//        .deleteCookies("JSESSIONID", "AUTHTOKEN")
-        .logoutSuccessUrl("/")
+        .authorizeHttpRequests()
+            .requestMatchers("/info/**").hasAuthority("MEMBER")
+            .requestMatchers("/admin/**").hasAuthority("ADMIN")
+            .anyRequest().permitAll()
         .and()
+        .addFilterBefore(tokenFilter, UsernamePasswordAuthenticationFilter.class)
+        .userDetailsService(authService)
+        .formLogin()
+          .loginPage("/login")
+          .loginProcessingUrl("/login")
+          .usernameParameter("email")
+          .passwordParameter("password")
+          .defaultSuccessUrl("/")
+          .failureUrl("/login?error=true")
+        .and()
+        .logout(withDefaults())
         .build();
   }
 
+  @Bean
+  public BCryptPasswordEncoder passwordEncoder() {
+    return new BCryptPasswordEncoder(16);
+  }
+
+  @Bean
+  public DaoAuthenticationProvider daoAuthenticationProvider(){
+    DaoAuthenticationProvider daoAuthenticationProvider = new DaoAuthenticationProvider();
+    daoAuthenticationProvider.setPasswordEncoder(passwordEncoder());
+    daoAuthenticationProvider.setUserDetailsService(authService);
+    return daoAuthenticationProvider;
+  }
 }

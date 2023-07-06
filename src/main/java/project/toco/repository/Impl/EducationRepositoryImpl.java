@@ -1,6 +1,6 @@
 package project.toco.repository.Impl;
 
-import static io.jsonwebtoken.lang.Strings.hasText;
+import static org.springframework.util.StringUtils.hasText;
 import static project.toco.entity.QEducation.education;
 
 import com.querydsl.core.types.Projections;

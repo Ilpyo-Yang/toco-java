@@ -1,5 +1,6 @@
 package project.toco.repository.Impl;
 
+import static org.springframework.util.StringUtils.hasText;
 import static com.querydsl.core.types.ExpressionUtils.count;
 import static project.toco.entity.QEducation.education;
 import static project.toco.entity.QEducationScore.educationScore;
@@ -22,6 +23,6 @@ public class EducationScoreRepositoryImpl implements EducationScoreCustom {
   }
 
   private BooleanExpression uuidEq(String uuid) {
-    return uuid!=null ? education.uuid.eq(uuid) : null;
+    return hasText(uuid)? education.uuid.eq(uuid) : null;
   }
 }

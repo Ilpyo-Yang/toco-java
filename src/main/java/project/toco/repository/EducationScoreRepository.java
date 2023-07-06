@@ -7,4 +7,5 @@ import project.toco.entity.EducationScore;
 @Repository
 public interface EducationScoreRepository extends JpaRepository<EducationScore, String> {
   long calculateScore(String uuid);
+  EducationScore findByEducationUuid(String uuid);
 }

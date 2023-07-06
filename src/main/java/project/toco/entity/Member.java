@@ -10,16 +10,11 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.OneToMany;
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.List;
 import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-import org.springframework.security.core.GrantedAuthority;
-import org.springframework.security.core.authority.SimpleGrantedAuthority;
-import org.springframework.security.core.userdetails.User;
-import org.springframework.security.core.userdetails.UserDetails;
 import project.toco.security.ColumnEncryptor;
 
 @Entity
@@ -34,7 +29,7 @@ public class Member extends BaseTimeEntity {
   @Convert(converter = ColumnEncryptor.class)
   private String name;
   @Column(unique = true)
-  @Convert(converter = ColumnEncryptor.class)
+//  @Convert(converter = ColumnEncryptor.class)
   private String email;
   private String password;
   private String role;
@@ -47,7 +42,7 @@ public class Member extends BaseTimeEntity {
     progresses.add(progress);
     progress.setMember(this);
   }
-  public static Member createMember(String name, String email, String password, String role, Progress... progresses){
+  public static Member createMember(String name, String email, String password, String role, List<Progress> progresses){
     Member member = new Member();
     member.setName(name);
     member.setEmail(email);

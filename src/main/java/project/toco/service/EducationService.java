@@ -25,14 +25,16 @@ public class EducationService {
 
   public EducationDto findOneEduToDto(String uuid){
     EducationDto dto = educationRepository.findOneEduToDto(uuid);
-    dto.setScore(educationScoreRepository.calculateScore(dto.getUuid()));
+    if(educationScoreRepository.findByEducationUuid(dto.getUuid())!=null)
+      dto.setScore(educationScoreRepository.calculateScore(dto.getUuid()));
     return dto;
   }
 
   public List<EducationDto> findAllToDto() {
     List<EducationDto> educationDtoList = educationRepository.findAllToDto();
     for(EducationDto dto: educationDtoList){
-      dto.setScore(educationScoreRepository.calculateScore(dto.getUuid()));
+      if(educationScoreRepository.findByEducationUuid(dto.getUuid())!=null)
+        dto.setScore(educationScoreRepository.calculateScore(dto.getUuid()));
     }
     return educationDtoList;
   }
