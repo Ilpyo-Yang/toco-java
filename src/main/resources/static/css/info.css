@@ -9,6 +9,12 @@ h4{
 p{
     font-size: 1.2rem;
 }
+image{
+    height: 20vw;
+    float: right;
+    padding-right: 4vw;
+    margin-top: 5vw;
+}
 
 @media all and (min-width:768px) and (max-width:1023px) {
 
