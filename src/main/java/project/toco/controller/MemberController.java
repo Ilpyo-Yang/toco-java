@@ -41,7 +41,8 @@ public class MemberController {
 
     @PostMapping("/signup")
     public String signup(SignupForm form, HttpServletResponse response){
-        response.addCookie(new Cookie("AUTHTOKEN", memberService.create(form)));
+        memberService.create(form);
+//        response.addCookie(new Cookie("AUTHTOKEN", memberService.create(form)));
         return "redirect:/";
     }
 

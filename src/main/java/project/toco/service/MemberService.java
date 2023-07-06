@@ -25,7 +25,7 @@ public class MemberService {
 
   @Transactional
   public String create(SignupForm form){
-    Member member = Member.createMember(form.getName(), form.getEmail(), passwordEncoder.encode(form.getPassword()), "MEMBER", new ArrayList<>());
+    Member member = Member.createMember(form.getName(), form.getEmail(), passwordEncoder.encode(form.getPassword()), form.getRole(), new ArrayList<>());
     memberRepository.save(member);
     UserDetails userDetails = userDetailsBuilder(member);
     return tokenProvider.generateToken(userDetails);
