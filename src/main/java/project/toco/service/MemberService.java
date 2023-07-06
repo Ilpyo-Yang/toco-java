@@ -48,10 +48,14 @@ public class MemberService {
     return token;
   }
 
-  private void doAutoLogin(String token) {
-    Authentication authentication = tokenProvider.getAuthentication(token);
-    SecurityContextHolder.getContext().setAuthentication(authentication);
+  public  String findNameByEmail(String email){
+    return memberRepository.findNameByEmail(email);
   }
+
+//  private void doAutoLogin(String token) {
+//    Authentication authentication = tokenProvider.getAuthentication(token);
+//    SecurityContextHolder.getContext().setAuthentication(authentication);
+//  }
 
   public String existEmail(String email) {
     return memberRepository.findByEmailToDto(email)==null? "" : memberRepository.findByEmailToDto(email).getUuid();

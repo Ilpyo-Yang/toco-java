@@ -45,7 +45,7 @@ public class InitDbTest {
     educationTypeService.create("Backend", "Python");
     educationTypeService.create("Frontend", "React");
     List<EducationTypeDto> typeList = educationTypeService.findTypesToDto();
-    assert typeList.size()==4;
+    assert typeList.size()==5;
   }
 
   @Test
