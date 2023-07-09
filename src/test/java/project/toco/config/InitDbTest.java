@@ -103,7 +103,9 @@ public class InitDbTest {
   public void intProgressDb(){
     Member member = memberService.findAll().get(0);
     Education education = educationService.findAll().get(0);
-    String progress_uuid = progressService.create(LocalDate.parse("2023-06-20"), "mon,sat", Status.Finished, member.getUuid(), education.getEducationContents().get(0).getUuid());
+    String progress_uuid = progressService.create(LocalDate.parse("2023-06-20"), "mon,sat", member.getUuid(), education.getEducationContents().get(0).getUuid());
+    progressService.findById(progress_uuid).setStatus(Status.Finished);
+    // 이하 점수 db 생성을 위한 status 임의 변경
     assert progressService.findById(progress_uuid).getStatus().equals(Status.Finished);
   }
 
