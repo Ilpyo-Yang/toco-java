@@ -29,6 +29,7 @@ public class ProgressService {
     return progressRepository.findAll();
   }
 
+  @Transactional
   public String create(LocalDate startDate, String mailingDays, String member_uuid, String education_uuid){
     Member member = memberRepository.findById(member_uuid).get();
     List<EducationContent> educationContents = educationContentRepository.findAllByEducationUuid(education_uuid);
@@ -36,11 +37,14 @@ public class ProgressService {
     progressRepository.save(progress);
     return progress.getUuid();
   }
+
+  @Transactional
   public void updateContent(String uuid, String education_content_uuid){
     Progress progress = progressRepository.findById(uuid).get();
     progress.setEducation_content(educationContentRepository.findById(education_content_uuid).get());
   }
 
+  @Transactional
   public void updateStatus(String uuid, Status status){
     Progress progress = progressRepository.findById(uuid).get();
     progress.setStatus(status);

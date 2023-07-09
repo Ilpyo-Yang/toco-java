@@ -23,43 +23,11 @@
 
         <div class="row">
             <div class="col-8">
-                <div class="program">
-                    <span class="name" th:text="${dto.getName()}"></span>
-                    <span class="badge bg-secondary" th:text="|${dto.getScore()}점|"></span>
-                    <span class="badge bg-secondary" th:text="|${dto.getPeriod()}주|">16주</span>
-                    <span class="badge bg-secondary" th:text="${dto.getLevel().getName()}"></span>
-                    <br>
-                    <p class="intro"  th:text="${dto.getIntro()}"></p>
-                    <div class="sector">Contents</div>
-                    <div class="contains" th:each="content:${contents}">
-                        <span class="bold" th:text="|Chapter ${content.getChapter()}. ${content.getName()}|"></span><br>
-                        <span th:text="${content.getIntro()}"></span><br>
-                        <!--<span th:text="${content.getDetails()}"></span>-->
-                    </div>
-                </div>
             </div>
 
             <div class="col-4">
                 <span class="bold form">수업 시작하기</span>
-                <form th:action="@{/applyEdu}" th:method="post" th:object="${registerForm}" sec:authorize="isAuthenticated()">
-                    <label for="email" class="col-form-label">이메일</label>
-                    <input type="email" class="form-control-plaintext" id="email" th:name="email" th:value="${email}" readonly />
-                    <label for="date" class="col-form-label">수강 시작일</label>
-                    <input type="date" class="form-control-plaintext" id="date" th:field="*{date}" />
-                    <label class="col-form-label">메일 수신일</label>
-                    <div>
-                        <div class="days" value="sun">S</div>
-                        <div class="days" value="mon">M</div>
-                        <div class="days" value="tue">T</div>
-                        <div class="days" value="wed">W</div>
-                        <div class="days" value="thu">T</div>
-                        <div class="days" value="fri">F</div>
-                        <div class="days" value="sat">S</div>
-                    </div>
-                    <input type="hidden" class="form-control-plaintext" th:field="*{days}" />
-                    <input type="hidden" class="form-control-plaintext" th:name="education_uuid" th:value="${uuid}" />
-                    <button type="button" id="submit_btn" class="btn submit_btn">수업 신청하기</button>
-                </form>
+
                 <span class="warning" id="warning"></span>
 
                 <div sec:authorize="isAnonymous()">

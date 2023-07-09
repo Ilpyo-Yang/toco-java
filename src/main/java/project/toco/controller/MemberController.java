@@ -43,7 +43,7 @@ public class MemberController {
     public String signup(SignupForm form, HttpServletResponse response){
         memberService.create(form);
 //        response.addCookie(new Cookie("AUTHTOKEN", memberService.create(form)));
-        return "redirect:/";
+        return "redirect:/login";
     }
 
     @PostMapping("/logout")
