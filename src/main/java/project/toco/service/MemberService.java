@@ -11,6 +11,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import project.toco.dto.form.SignupForm;
+import project.toco.entity.LoginUser;
 import project.toco.entity.Member;
 import project.toco.repository.MemberRepository;
 import project.toco.security.TokenProvider;
@@ -62,10 +63,7 @@ public class MemberService {
   }
 
   public UserDetails userDetailsBuilder(Member member){
-    return User.withUsername(member.getEmail())
-        .password(member.getPassword())
-        .roles(member.getRole())
-        .build();
+    return LoginUser.create(member.getUuid(), member.getEmail(), member.getPassword(), member.getRole());
   }
 
   /* test */

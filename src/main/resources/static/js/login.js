@@ -7,25 +7,20 @@ $(document).ready(function(){
 })
 
 $(document).on('click','#submit_btn',function(){
-    b = false;
     $('#warning').innerHTML = '';
 
     if ($('#email').val()==='') {
         $('#warning').get(0).innerHTML = '이메일을 입력해주세요.';
-        b = true;
+        return false;
     }else if(exptext.test($('#email').val())===false){
         $('#warning').get(0).innerHTML = '잘못된 이메일 형식입니다.';
-        b = true;
+        return false;
     }else if ($('#password').val()===''){
         $('#warning').get(0).innerHTML = '비밀번호를 입력해주세요.';
-        b = true;
+        return false;
     }
 
-    if(b) return false;
-    else{
-        //$("#form").submit();
-        func_login();
-    }
+    func_login();
 });
 
 function func_login(){

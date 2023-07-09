@@ -42,12 +42,12 @@ public class EducationTypeRepositoryImpl implements EducationTypeCustom {
   }
 
   @Override
-  public List<String> findUuidByMainAndSub(String main, String sub) {
+  public String findUuidByMainAndSub(String main, String sub) {
     return jpaQueryFactory
         .select(educationType.uuid)
         .from(educationType)
         .where(mainEq(main), subEq(sub))
-        .fetch();
+        .fetchOne();
   }
 
   private BooleanExpression mainEq(String main) {
@@ -55,7 +55,7 @@ public class EducationTypeRepositoryImpl implements EducationTypeCustom {
   }
 
   private BooleanExpression subEq(String sub) {
-    return hasText(sub) ? educationType.uuid.eq(sub) : null;
+    return hasText(sub) ? educationType.sub.eq(sub) : null;
   }
 
 }

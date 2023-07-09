@@ -5,8 +5,8 @@
       layout:decorate="~{layouts/layout}">
 
     <head>
-        <link rel="stylesheet" th:href="@{css/eduDetail.css}">
-        <script th:src="@{js/eduDetail.js}"></script>
+        <link rel="stylesheet" th:href="@{css/myPage.css}">
+        <script th:src="@{js/myPage.js}"></script>
     </head>
 
     <div layout:fragment="content" class="content">
@@ -41,20 +41,20 @@
 
             <div class="col-4">
                 <span class="bold form">수업 시작하기</span>
-                <form id="form" th:action="@{/applyEdu}" th:method="post" th:object="${registerForm}" sec:authorize="isAuthenticated()">
+                <form th:action="@{/applyEdu}" th:method="post" th:object="${registerForm}" sec:authorize="isAuthenticated()">
                     <label for="email" class="col-form-label">이메일</label>
                     <input type="email" class="form-control-plaintext" id="email" th:name="email" th:value="${email}" readonly />
                     <label for="date" class="col-form-label">수강 시작일</label>
                     <input type="date" class="form-control-plaintext" id="date" th:field="*{date}" />
                     <label class="col-form-label">메일 수신일</label>
                     <div>
-                        <span class="days" value="sun">S</span>
-                        <span class="days" value="mon">M</span>
-                        <span class="days" value="tue">T</span>
-                        <span class="days" value="wed">W</span>
-                        <span class="days" value="thu">T</span>
-                        <span class="days" value="fri">F</span>
-                        <span class="days" value="sat">S</span>
+                        <div class="days" value="sun">S</div>
+                        <div class="days" value="mon">M</div>
+                        <div class="days" value="tue">T</div>
+                        <div class="days" value="wed">W</div>
+                        <div class="days" value="thu">T</div>
+                        <div class="days" value="fri">F</div>
+                        <div class="days" value="sat">S</div>
                     </div>
                     <input type="hidden" class="form-control-plaintext" th:field="*{days}" />
                     <input type="hidden" class="form-control-plaintext" th:name="education_uuid" th:value="${uuid}" />

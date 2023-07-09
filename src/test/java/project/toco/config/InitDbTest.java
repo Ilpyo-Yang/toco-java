@@ -44,19 +44,20 @@ public class InitDbTest {
     educationTypeService.create("Backend", "Java");
     educationTypeService.create("Backend", "Python");
     educationTypeService.create("Frontend", "React");
+    educationTypeService.create("Frontend", "JavaScript");
     List<EducationTypeDto> typeList = educationTypeService.findTypesToDto();
-    assert typeList.size()==5;
+    assert typeList.size()==6;
   }
 
   @Test
   public void intMemberDb() throws NoSuchFieldException {
     SignupForm form = new SignupForm("rosie", "rosie@gmail.com", "1234", "MEMBER");
-    String uuid = memberService.create(form);
-    Member member = memberService.findById(uuid);
+    memberService.create(form);
+    Member member = memberService.findByEmail(form.getEmail());
     assert member.getName().equals("rosie");
 
     form = new SignupForm("john", "john@gmail.com", "1234", "MEMBER");
-    uuid = memberService.create(form);
+    memberService.create(form);
   }
 
   @Test
@@ -89,11 +90,13 @@ public class InitDbTest {
         null);
     List<EducationContentDto> list = List.of(educationContentDto, educationContentDto1, educationContentDto2);
 
+    String type_uuid = educationTypeService.findUuid("Backend", "Java");
+
     EducationDto educationDto = new EducationDto(null, "초보를 위한 Java",
         "Java를 처음 입문하는 사람들에게 스스로 학습할 수 있는 방법을 알려드립니다.",
-        0, 0, 0, "67373590-8373-4697-92a0-23831f924b87", Level.Basic, null, null);
+        0, 0, 0, type_uuid, Level.Basic, null, null);
     String education_uuid = educationService.create(educationDto, list);
-    assert educationService.findById(education_uuid).getType().equals(typeList.get(0).getUuid());
+    assert educationService.findById(education_uuid).getType().equals(type_uuid);
   }
 
   @Test

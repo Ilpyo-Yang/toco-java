@@ -1,6 +1,5 @@
 package project.toco.controller;
 
-import jakarta.servlet.http.Cookie;
 import jakarta.servlet.http.HttpServletResponse;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
@@ -17,6 +16,7 @@ import project.toco.service.MemberService;
 public class MemberController {
     private final MemberService memberService;
 
+    /* 로그인 */
     @GetMapping("/login")
     public String login(){
         return "login";
@@ -46,13 +46,23 @@ public class MemberController {
         return "redirect:/";
     }
 
-//    @GetMapping("/logout")
-//    public void logout(){}
+    @PostMapping("/logout")
+    public String logout(){
+        return "/";
+    }
 
     @ResponseBody
-    @GetMapping("member/existEmail")
+    @GetMapping("/member/existEmail")
     public String existEmail(@RequestParam("email") String email){
         return memberService.existEmail(email);
+    }
+
+
+
+    /* 마이페이지 */
+    @GetMapping("/myPage")
+    public String myPage(){
+        return "myPage";
     }
 
 }

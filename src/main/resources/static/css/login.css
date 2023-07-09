@@ -45,12 +45,6 @@ form > input{
     background-color: #e78324;
     text-align: center !important;
 }
-.warning{
-    color: red;
-    text-align: left;
-    display: block;
-    margin-bottom: 3vh;
-}
 .col > img{
     margin: 5vh 0;
 }

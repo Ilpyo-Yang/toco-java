@@ -45,7 +45,7 @@ public class EducationRepositoryImpl implements EducationCustom {
             education.uuid, education.name, education.intro, education.students, education.period,
             education.type, education.level, education.createdDate, education.lastModifiedDate))
         .from(education)
-        .where(typeEq(eduCondition.getType()),
+        .where(typeEq(eduCondition.getType_uuid()),
             levelEq(eduCondition.getLevel()),
             periodEq(eduCondition.getPeriod()))
         .fetch();
@@ -63,7 +63,7 @@ public class EducationRepositoryImpl implements EducationCustom {
     return hasText(uuid) ? education.uuid.eq(uuid) : null;
   }
 
-  private BooleanExpression typeEq(List<String> type) {
+  private BooleanExpression typeEq(String type) {
     return type!=null ? education.type.in(type) : null;
   }
 

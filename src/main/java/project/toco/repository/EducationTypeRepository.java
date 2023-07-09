@@ -12,5 +12,5 @@ public interface EducationTypeRepository extends JpaRepository<EducationType,Str
   List<EducationTypeDto> findTypesToDto();
   List<EducationTypeDto> findTypesToDtoByMain(String main);
   List<String> findMainType();
-  List<String> findUuidByMainAndSub(String main, String sub);
+  String findUuidByMainAndSub(String main, String sub);
 }

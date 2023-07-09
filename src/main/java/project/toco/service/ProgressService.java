@@ -29,13 +29,12 @@ public class ProgressService {
     return progressRepository.findAll();
   }
 
-  public String create(LocalDate startDate, String mailingDays, Status status, String member_uuid, String education_content_uuid){
+  public String create(LocalDate startDate, String mailingDays, String member_uuid, String education_uuid){
     Member member = memberRepository.findById(member_uuid).get();
-    EducationContent educationContent = educationContentRepository.findById(education_content_uuid).get();
-
-    Progress progress = Progress.createProgress(startDate, mailingDays, status, member, educationContent);
+    List<EducationContent> educationContents = educationContentRepository.findAllByEducationUuid(education_uuid);
+    Progress progress = Progress.createProgress(startDate, mailingDays, Status.NotStarted, member, educationContents.get(0));
     progressRepository.save(progress);
-    return progress.getUuid();  // todo 여기 확인하기
+    return progress.getUuid();
   }
   public void updateContent(String uuid, String education_content_uuid){
     Progress progress = progressRepository.findById(uuid).get();

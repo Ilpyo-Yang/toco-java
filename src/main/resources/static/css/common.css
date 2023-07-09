@@ -56,6 +56,13 @@ body{
     word-break:keep-all;
 }
 
+.warning{
+    color: red;
+    text-align: left;
+    display: block;
+    margin-bottom: 3vh;
+}
+
 
 /* 스크롤 */
 .visible-scrollbar, .invisible-scrollbar, .mostly-customized-scrollbar {

@@ -12,4 +12,5 @@ import project.toco.repository.custom.EducationContentCustom;
 public interface EducationContentRepository extends JpaRepository<EducationContent, String>, EducationContentCustom {
   String getNextUuid(int nextChapter, Education education);
   List<EducationContentDto> findAllToDto();
+  List<EducationContent> findAllByEducationUuid(String educationUuid);
 }
