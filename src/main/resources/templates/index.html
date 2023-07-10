@@ -40,7 +40,7 @@
                     <br>
                     <div class="input-group">
                         <select class="form-select form-select-sm" aria-label=".form-select-sm example">
-                            <option value="" selected>프로그램 선택</option>
+                            <option value="" selected>-- 프로그램 선택하기 --</option>
                             <th:block th:each="edu:${eduList}">
                                 <option th:value="${edu.getUuid()}" th:text="${edu.getName()}"></option>
                             </th:block>
@@ -61,7 +61,7 @@
                                 <span class="badge bg-secondary" th:text="|${edu.getPeriod()}일|"></span>
                                 <span class="badge bg-secondary" th:text="${edu.getLevel().getName()}"></span>
                                 <br>
-                                <span class="intro" th:text="${edu.getIntro()}"></span>
+                                <span class="one_line intro" th:text="${edu.getIntro()}"></span>
                             </li>
                         </ul>
 

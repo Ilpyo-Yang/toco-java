@@ -13,5 +13,5 @@ function func_move(str){
 }
 
 $(document).on('click','.eduDetail',function(){
-    location.href = '/eduDetail/'+this.id;
+    location.href = '/edu/detail/'+this.id;
 });

@@ -63,7 +63,7 @@ public class MemberService {
   }
 
   public UserDetails userDetailsBuilder(Member member){
-    return LoginUser.create(member.getUuid(), member.getEmail(), member.getPassword(), member.getRole());
+    return LoginUser.create(member.getUuid(), member.getName(), member.getEmail(), member.getPassword(), member.getRole());
   }
 
   /* test */

@@ -20,13 +20,15 @@ import org.springframework.security.core.userdetails.UserDetails;
 public class LoginUser implements UserDetails {
   @Id
   private String uuid;
+  private String name;
   private String email;
   private String password;
   private String role;
 
-  public static LoginUser create(String uuid, String email, String password, String role){
+  public static LoginUser create(String uuid, String name, String email, String password, String role){
     LoginUser user = new LoginUser();
     user.setUuid(uuid);
+    user.setName(name);
     user.setEmail(email);
     user.setPassword(password);
     user.setRole(role);

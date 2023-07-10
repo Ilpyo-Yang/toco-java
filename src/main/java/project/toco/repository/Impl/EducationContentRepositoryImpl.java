@@ -25,12 +25,13 @@ public class EducationContentRepositoryImpl implements EducationContentCustom {
   }
 
   @Override
-  public List<EducationContentDto> findAllToDto() {
+  public List<EducationContentDto> findAllToDto(Education education) {
     return jpaQueryFactory
         .select(Projections.fields(EducationContentDto.class,
             educationContent.uuid, educationContent.chapter, educationContent.name, educationContent.intro,
             educationContent.details, educationContent.education.uuid))
         .from(educationContent)
+        .where(educationEq(education))
         .orderBy(educationContent.chapter.asc())
         .fetch();
   }

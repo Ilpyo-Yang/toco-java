@@ -37,17 +37,17 @@ public class EducationTypeRepositoryImpl implements EducationTypeCustom {
     return jpaQueryFactory
         .select(educationType.main).distinct()
         .from(educationType)
-        .orderBy(educationType.main.desc())
+        .orderBy(educationType.main.asc())
         .fetch();
   }
 
   @Override
-  public String findUuidByMainAndSub(String main, String sub) {
+  public List<String> findUuidByMainAndSub(String main, String sub) {
     return jpaQueryFactory
         .select(educationType.uuid)
         .from(educationType)
         .where(mainEq(main), subEq(sub))
-        .fetchOne();
+        .fetch();
   }
 
   private BooleanExpression mainEq(String main) {

@@ -1,6 +1,7 @@
 package project.toco.config;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.List;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -45,25 +46,29 @@ public class InitDbTest {
     educationTypeService.create("Backend", "Python");
     educationTypeService.create("Frontend", "React");
     educationTypeService.create("Frontend", "JavaScript");
+    educationTypeService.create("DevOps", "AWS");
+    educationTypeService.create("DevOps", "Docker");
     List<EducationTypeDto> typeList = educationTypeService.findTypesToDto();
-    assert typeList.size()==6;
+    assert typeList.size()==8;
   }
 
   @Test
   public void intMemberDb() throws NoSuchFieldException {
-    SignupForm form = new SignupForm("rosie", "rosie@gmail.com", "1234", "MEMBER");
+    SignupForm form = new SignupForm("rosie", "rosie@gmail.com", "1234", "STUDENT");
     memberService.create(form);
     Member member = memberService.findByEmail(form.getEmail());
     assert member.getName().equals("rosie");
 
-    form = new SignupForm("john", "john@gmail.com", "1234", "MEMBER");
+    form = new SignupForm("john", "john@gmail.com", "1234", "STUDENT");
+    memberService.create(form);
+    form = new SignupForm("admin", "admin@gmail.com", "1234", "ADMIN");
+    memberService.create(form);
+    form = new SignupForm("teacher", "teacher@gmail.com", "1234", "TEACHER");
     memberService.create(form);
   }
 
   @Test
   public void intEduDb(){
-    List<EducationTypeDto> typeList = educationTypeService.findTypesToDto();
-
     EducationContentDto educationContentDto = new EducationContentDto(null, 0,
         "자바 개발 시작하기",
         "오늘은 자바에 대해 알아보는 시간입니다. 자바라는 언어는 어떤 언어이고 기본 설치부터 공식문서를 보는 법을 알아봅니다.",
@@ -89,12 +94,10 @@ public class InitDbTest {
             + "4. 객체 지향 프로그래밍이란 무엇이고 그 특징을 알아봅니다.",
         null);
     List<EducationContentDto> list = List.of(educationContentDto, educationContentDto1, educationContentDto2);
-
-    String type_uuid = educationTypeService.findUuid("Backend", "Java");
-
+    String type_uuid = educationTypeService.findUuid("Backend", "Java").get(0);
     EducationDto educationDto = new EducationDto(null, "초보를 위한 Java",
         "Java를 처음 입문하는 사람들에게 스스로 학습할 수 있는 방법을 알려드립니다.",
-        0, 0, 0, type_uuid, Level.Basic, null, null);
+        0, list.size(), 0, type_uuid, Level.Basic, LocalDateTime.now(), null);
     String education_uuid = educationService.create(educationDto, list);
     assert educationService.findById(education_uuid).getType().equals(type_uuid);
   }
@@ -103,7 +106,7 @@ public class InitDbTest {
   public void intProgressDb(){
     Member member = memberService.findAll().get(0);
     Education education = educationService.findAll().get(0);
-    String progress_uuid = progressService.create(LocalDate.parse("2023-06-20"), "mon,sat", member.getUuid(), education.getEducationContents().get(0).getUuid());
+    String progress_uuid = progressService.create(LocalDate.now(), "mon,sat", member.getUuid(), education.getUuid());
     progressService.findById(progress_uuid).setStatus(Status.Finished);
     // 이하 점수 db 생성을 위한 status 임의 변경
     assert progressService.findById(progress_uuid).getStatus().equals(Status.Finished);
@@ -113,7 +116,7 @@ public class InitDbTest {
   public void intEduScoreDb() {
     String member_uuid = memberService.findAll().get(0).getUuid();
     Education education = educationService.findAll().get(0);
-    EducationScore educationScore = educationScoreService.create(EducationScore.createEducationScore(member_uuid, 2, education));
+    EducationScore educationScore = educationScoreService.create(EducationScore.createEducationScore(member_uuid, 4, education));
     assert educationScore.getUuid().equals(educationScoreService.findById(educationScore.getUuid()).getUuid());
   }
 }

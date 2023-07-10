@@ -63,7 +63,7 @@ public class EducationRepositoryImpl implements EducationCustom {
     return hasText(uuid) ? education.uuid.eq(uuid) : null;
   }
 
-  private BooleanExpression typeEq(String type) {
+  private BooleanExpression typeEq(List<String> type) {
     return type!=null ? education.type.in(type) : null;
   }
 

@@ -15,6 +15,11 @@
 .right{
     float: right;
 }
+.one_line{
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
 
 /* 로고 */
 .logo{

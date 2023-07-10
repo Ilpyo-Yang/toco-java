@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.w3.org/1999/xhtml"
       xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
       layout:decorate="~{layouts/layout}">
 
@@ -12,10 +13,10 @@
         <div class="header">
             <img class="pointer logo left" onclick="func_move('/')" th:src="@{image/toco-orange.png}">
 
-            <span class="pointer tab right" onclick="func_move('mypage')">MYPAGE</span>
-            <span class="pointer tab right" onclick="func_move('edu')">EDU</span>
-            <span class="pointer tab right" onclick="func_move('logout')">LOGOUT</span>
-            <span class="pointer tab right" onclick="func_move('login')">LOGIN</span>
+            <span class="pointer tab right" sec:authorize="isAuthenticated()" onclick="func_move('mypage')">MYPAGE</span>
+            <span class="pointer tab right" sec:authorize="isAnonymous()" onclick="func_move('edu')">EDU</span>
+            <span class="pointer tab right" sec:authorize="isAuthenticated()" onclick="func_move('logout')">LOGOUT</span>
+            <span class="pointer tab right" sec:authorize="isAnonymous()" onclick="func_move('login')">LOGIN</span>
             <span class="pointer tab right" onclick="func_move('signup')">SIGNUP</span>
             <span class="pointer tab right" onclick="func_move('info')">INFO</span>
         </div>

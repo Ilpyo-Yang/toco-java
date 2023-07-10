@@ -33,9 +33,6 @@
 .recommended > ul{
     margin-top: 3vh;
 }
-.recommended > ul > li{
-    padding: 2vh;
-}
 .recommended > ul > li > .name{
     color: #d25726;
     font-weight: bold;

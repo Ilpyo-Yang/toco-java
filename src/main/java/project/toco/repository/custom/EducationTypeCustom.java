@@ -7,5 +7,5 @@ public interface EducationTypeCustom {
   List<EducationTypeDto> findTypesToDto();
   List<EducationTypeDto> findTypesToDtoByMain(String main);
   List<String> findMainType();
-  String findUuidByMainAndSub(String main, String sub);
+  List<String> findUuidByMainAndSub(String main, String sub);
 }

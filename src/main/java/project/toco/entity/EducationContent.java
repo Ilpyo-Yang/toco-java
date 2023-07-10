@@ -30,6 +30,7 @@ public class EducationContent {
   private int chapter;
   private String name;
   private String intro;
+  @Column(length=1000)
   private String details;
 
   @ManyToOne(fetch = FetchType.LAZY)

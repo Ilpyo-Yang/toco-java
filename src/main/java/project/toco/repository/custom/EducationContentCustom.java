@@ -6,5 +6,5 @@ import project.toco.entity.Education;
 
 public interface EducationContentCustom {
   String getNextUuid(int nextChapter, Education education);
-  List<EducationContentDto> findAllToDto();
+  List<EducationContentDto> findAllToDto(Education education);
 }

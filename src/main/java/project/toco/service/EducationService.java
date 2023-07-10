@@ -43,9 +43,11 @@ public class EducationService {
   public List<EducationDto> findAllToDtoWithCondition(EduCondition eduCondition) {
     List<EducationDto> educationDtoList = educationRepository.findAllToDtoWithCondition(eduCondition);
     List<EducationDto> scored_educationDtoList = new ArrayList<>();
-    long score;
     for(EducationDto dto: educationDtoList){
-      score = educationScoreRepository.calculateScore(dto.getUuid());
+      long score = 0;
+      if(educationScoreRepository.findByEducationUuid(dto.getUuid())!=null){
+        score = educationScoreRepository.calculateScore(dto.getUuid());
+      }
       if((int)score==eduCondition.getStar() || eduCondition.getStar()==0){
         dto.setScore(score);
         scored_educationDtoList.add(dto);
@@ -94,7 +96,9 @@ public class EducationService {
   }
 
   public List<EducationDto> getTopThree(List<EducationDto> eduList) {
-    eduList = eduList.stream().sorted(Comparator.comparing(EducationDto::getScore)).collect(Collectors.toList());
+    eduList = eduList.stream().sorted(Comparator.comparing(EducationDto::getScore).reversed())
+        .limit(3)
+        .collect(Collectors.toList());
     return eduList;
   }
 }

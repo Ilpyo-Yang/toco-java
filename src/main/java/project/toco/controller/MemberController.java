@@ -60,9 +60,9 @@ public class MemberController {
 
 
     /* 마이페이지 */
-    @GetMapping("/myPage")
+    @GetMapping("/mypage")
     public String myPage(){
-        return "myPage";
+        return "mypage";
     }
 
 }

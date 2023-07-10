@@ -19,6 +19,6 @@ public class AuthService implements UserDetailsService {
   @Override
   public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
     MemberDto dto = memberRepository.findByEmailToDto(username);
-    return LoginUser.create(dto.getUuid(), dto.getEmail(), dto.getPassword(), dto.getRole());
+    return LoginUser.create(dto.getUuid(), dto.getName(), dto.getEmail(), dto.getPassword(), dto.getRole());
   }
 }

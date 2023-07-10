@@ -9,11 +9,13 @@ import project.toco.dto.EducationDto;
 import project.toco.entity.Education;
 import project.toco.entity.EducationContent;
 import project.toco.repository.EducationContentRepository;
+import project.toco.repository.EducationRepository;
 
 @Service
 @Transactional(readOnly = true)
 @RequiredArgsConstructor
 public class EducationContentService {
+  private final EducationRepository educationRepository;
   private final EducationContentRepository educationContentRepository;
 
   public String getNextUuid(String uuid) {
@@ -23,7 +25,7 @@ public class EducationContentService {
     return educationContentRepository.getNextUuid(nextChapter, education);
   }
 
-  public List<EducationContentDto> findAllToDto() {
-    return educationContentRepository.findAllToDto();
+  public List<EducationContentDto> findAllToDto(String education_uuid) {
+    return educationContentRepository.findAllToDto(educationRepository.findById(education_uuid).get());
   }
 }
