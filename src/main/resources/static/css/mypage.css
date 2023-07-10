@@ -1,0 +1,54 @@
+.row{
+    width: 95%;
+    margin: 0 auto;
+    padding-top: 8vh;
+    text-align: left;
+}
+.row > .col-3{
+    font-size: 1rem;
+    text-align: center;
+    border-right: 0.1rem dotted lightgray;
+    padding: 2vw;
+}
+.row > .col-9{
+     padding: 2vw;
+ }
+
+/* col-3 */
+.profile{
+    width: 6vw;
+}
+.name{
+    font-weight: bold;
+    font-size: 1.5rem;
+    line-height: 8rem;
+}
+.static{
+    font-weight: bold;
+    line-height: 2rem;
+    text-align: center;
+    display: inline-block;
+}
+.static_content{
+    text-align: left;
+    width: 8vw;
+}
+.static_value{
+    width: 4vw;
+}
+
+/* col-9 */
+
+@media all and (min-width:768px) and (max-width:1023px) {
+
+}
+
+@media all and (min-width:480px) and (max-width:767px) {
+
+}
+
+@media all and (max-width:479px) {
+    .content{
+        padding: 6vw !important;
+    }
+}

@@ -6,7 +6,7 @@ import lombok.ToString;
 @Getter
 @ToString
 public enum Status {
-  NotStarted("수강 전"), InProgress("수강 중"), Finished("완료"), Canceled("수강취소");
+  NotStarted("수강 전"), InProgress("수강 중"), Finished("완료"), Canceled("수강취소"), Stopped("수강정지");
 
   private final String name;
   Status(String name) {

@@ -2,9 +2,11 @@ package project.toco.service;
 
 import java.time.LocalDate;
 import java.util.List;
+import java.util.stream.Collectors;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import project.toco.dto.ProgressDto;
 import project.toco.entity.EducationContent;
 import project.toco.entity.Member;
 import project.toco.entity.Progress;
@@ -48,5 +50,27 @@ public class ProgressService {
   public void updateStatus(String uuid, Status status){
     Progress progress = progressRepository.findById(uuid).get();
     progress.setStatus(status);
+  }
+
+  public List<ProgressDto> findByMemberUuid(String memberUuid) {
+    return progressRepository.findByMemberUuid(memberUuid);
+  }
+
+  public int getProgressCnt(List<ProgressDto> progressDtoList) {
+    if(progressDtoList==null) return 0;
+    return progressDtoList
+        .stream()
+        .filter(dto -> dto.getStatus().equals(Status.InProgress))
+        .collect(Collectors.toList())
+        .size();
+  }
+
+  public int getFinishedCnt(List<ProgressDto> progressDtoList) {
+    if(progressDtoList==null) return 0;
+    return progressDtoList
+        .stream()
+        .filter(dto -> dto.getStatus().equals(Status.Finished))
+        .collect(Collectors.toList())
+        .size();
   }
 }

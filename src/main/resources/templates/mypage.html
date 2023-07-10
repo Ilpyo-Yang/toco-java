@@ -5,8 +5,8 @@
       layout:decorate="~{layouts/layout}">
 
     <head>
-        <link rel="stylesheet" th:href="@{css/myPage.css}">
-        <script th:src="@{js/myPage.js}"></script>
+        <link rel="stylesheet" th:href="@{css/mypage.css}">
+        <script th:src="@{js/mypage.js}"></script>
     </head>
 
     <div layout:fragment="content" class="content">
@@ -22,19 +22,22 @@
         </div>
 
         <div class="row">
-            <div class="col-8">
+            <div class="col-3">
+                <img th:src="@{${'/image/profile/'+profile}}" class="profile"/>
+                <div>
+                    <span class="name" th:text="${name}"></span>
+                    <br>
+                    <span class="static static_content">수강중인 과정</span>
+                    <span class="static static_value" th:text="${progressCnt}"></span>
+                    <br>
+                    <span class="static static_content">완료한 과정</span>
+                    <span class="static static_value" th:text="${finishedCnt}"></span>
+                </div>
             </div>
 
-            <div class="col-4">
-                <span class="bold form">수업 시작하기</span>
-
-                <span class="warning" id="warning"></span>
-
-                <div sec:authorize="isAnonymous()">
-                    수업을 신청하려면 먼저
-                    <span id="signup" class="bold pointer sign" onclick="func_move(this.id)">회원가입</span> 또는
-                    <span id="login" class="bold pointer sign" onclick="func_move(this.id)">로그인</span>
-                    을 해주세요.
+            <div class="col-9">
+                <div>
+                    수업을 신청하려면
                 </div>
             </div>
         </div>
