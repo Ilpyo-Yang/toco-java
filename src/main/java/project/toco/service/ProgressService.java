@@ -23,14 +23,6 @@ public class ProgressService {
   private final MemberRepository memberRepository;
   private final EducationContentRepository educationContentRepository;
 
-  public Progress findById(String uuid){
-    return progressRepository.findById(uuid).get();
-  }
-
-  public List<Progress> findAll(){
-    return progressRepository.findAll();
-  }
-
   @Transactional
   public String create(LocalDate startDate, String mailingDays, String member_uuid, String education_uuid){
     Member member = memberRepository.findById(member_uuid).get();
@@ -90,5 +82,12 @@ public class ProgressService {
         .filter(dto -> dto.getStatus().equals(Status.Stopped))
         .collect(Collectors.toList())
         .size();
+  }
+
+  public Progress findById(String uuid){
+    return progressRepository.findById(uuid).get();
+  }
+  public List<Progress> findAll(){
+    return progressRepository.findAll();
   }
 }

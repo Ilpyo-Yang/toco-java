@@ -49,10 +49,6 @@ public class MemberService {
     return token;
   }
 
-  public  String findNameByEmail(String email){
-    return memberRepository.findNameByEmail(email);
-  }
-
 //  private void doAutoLogin(String token) {
 //    Authentication authentication = tokenProvider.getAuthentication(token);
 //    SecurityContextHolder.getContext().setAuthentication(authentication);
@@ -66,7 +62,7 @@ public class MemberService {
     return LoginUser.create(member.getUuid(), member.getName(), member.getEmail(), member.getPassword(), member.getRole());
   }
 
-  /* test */
+  /* for test */
   public Member findById(String uuid) throws NoSuchFieldException {
     return memberRepository.findById(uuid).orElseThrow(() -> new NoSuchFieldException("일치하는 사용자가 없습니다."));
   }

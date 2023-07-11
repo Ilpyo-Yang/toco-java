@@ -94,7 +94,7 @@ public class InitDbTest {
             + "4. 객체 지향 프로그래밍이란 무엇이고 그 특징을 알아봅니다.",
         null);
     List<EducationContentDto> list = List.of(educationContentDto, educationContentDto1, educationContentDto2);
-    String type_uuid = educationTypeService.findUuid("Backend", "Java").get(0);
+    String type_uuid = educationTypeService.findUuidByMainAndSub("Backend", "Java").get(0);
     EducationDto educationDto = new EducationDto(null, "초보를 위한 Java",
         "Java를 처음 입문하는 사람들에게 스스로 학습할 수 있는 방법을 알려드립니다.",
         0, list.size(), 0, type_uuid, Level.Basic, LocalDateTime.now(), null);

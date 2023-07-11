@@ -83,7 +83,7 @@ public class InitDbContentsTest {
         null);
 
     List<EducationContentDto> list = List.of(ec, ec1, ec2, ec3, ec4, ec5, ec6, ec7);
-    String type_uuid = educationTypeService.findUuid("Backend", "Java").get(0);
+    String type_uuid = educationTypeService.findUuidByMainAndSub("Backend", "Java").get(0);
     EducationDto educationDto = new EducationDto(null, "Java 기초 학습 가이드",
         "이 학습 가이드는 Java 프로그래밍 언어의 기초를 학습하고자 하는 사람들을 위한 자료입니다. 이 가이드를 통해 Java 언어의 기본 문법, 객체 지향 프로그래밍, 예외 처리, 파일 입출력 등을 학습할 수 있습니다. 각 주차별로 구성된 학습 내용을 따라가면서 스스로 Java에 대해 학습하는 데 도움이 될 것입니다.",
         0, list.size(), 0, type_uuid, Level.Basic, LocalDateTime.now(), null);
@@ -160,7 +160,7 @@ public class InitDbContentsTest {
         null);
 
     List<EducationContentDto> list = List.of(ec, ec1, ec2, ec3, ec4, ec5, ec6, ec7);
-    String type_uuid = educationTypeService.findUuid("CS", "Architecture").get(0);
+    String type_uuid = educationTypeService.findUuidByMainAndSub("CS", "Architecture").get(0);
     EducationDto educationDto = new EducationDto(null, "소프트웨어 아키텍처 기초 학습 가이드",
         "이 학습 가이드는 소프트웨어 아키텍처에 대한 기초를 학습하고자 하는 현업 개발자를 대상으로 제작된 자료입니다. 소프트웨어 아키텍처의 기본 개념과 원칙, 다양한 아키텍처 스타일 및 패턴을 학습할 수 있으며, 실무에서 아키텍처를 설계하고 구축하는 방법에 대한 가이드라인을 제공합니다.",
         0, list.size(), 0, type_uuid, Level.Challenge, LocalDateTime.now(), null);
@@ -295,7 +295,7 @@ public class InitDbContentsTest {
         null);
 
     List<EducationContentDto> list = List.of(ec, ec1, ec2, ec3, ec4, ec5, ec6, ec7, ec8, ec9, ec10, ec11);
-    String type_uuid = educationTypeService.findUuid("CS", "Architecture").get(0);
+    String type_uuid = educationTypeService.findUuidByMainAndSub("CS", "Architecture").get(0);
     EducationDto educationDto = new EducationDto(null, "실전 마이크로서비스 아키텍처 구축 학습 가이드",
         "백엔드 서버를 마이크로서비스 아키텍처로 구축하고자 하는 현업 개발자를 대상으로 제작된 자료입니다. 마이크로서비스 아키텍처의 기본 개념과 특징, 설계 원칙, 구현 방법 및 도구 등을 학습할 수 있으며, 실제 현장에서 마이크로서비스 아키텍처를 구축하는 방식과 개발 패턴을 익힐 수 있습니다.",
         0, list.size(), 0, type_uuid, Level.Challenge, LocalDateTime.now(), null);

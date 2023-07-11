@@ -31,7 +31,7 @@ public class EducationTypeService {
     return educationTypeRepository.findMainType();
   }
 
-  public List<String> findUuid(String main, String sub) {
+  public List<String> findUuidByMainAndSub(String main, String sub) {
     return educationTypeRepository.findUuidByMainAndSub(main, sub);
   }
 }
