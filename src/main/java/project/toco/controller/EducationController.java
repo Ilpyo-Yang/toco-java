@@ -71,9 +71,9 @@ public class EducationController {
         return "eduDetail";
     }
 
-    @PostMapping("applyEdu")
+    @PostMapping("/apply")
     public String applyEdu(RegisterEducationForm form, @AuthenticationPrincipal LoginUser user){
         progressService.create(form.getDate(), form.getDays(), user.getUuid(), form.getEducation_uuid());
-        return "redirect:/myPage";
+        return "redirect:/mypage";
     }
 }

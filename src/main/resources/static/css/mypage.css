@@ -1,20 +1,25 @@
 .row{
     width: 95%;
     margin: 0 auto;
-    padding-top: 8vh;
+    padding-top: 6vh;
     text-align: left;
-}
-.row > .col-3{
     font-size: 1rem;
+}
+.row > .left-col{
     text-align: center;
     border-right: 0.1rem dotted lightgray;
     padding: 2vw;
 }
-.row > .col-9{
-     padding: 2vw;
- }
+.row > .middle-col{
+    padding-left: 1vw;
+    border-right: 0.1rem dotted lightgray;
+}
+.row > .right-col{
 
-/* col-3 */
+}
+
+
+/* left-col */
 .profile{
     width: 6vw;
 }
@@ -37,7 +42,49 @@
     width: 4vw;
 }
 
-/* col-9 */
+
+/* middle-col */
+.row > .middle-col{
+    overflow: auto;
+    font-size: 0.8rem;
+}
+.row > .middle-col > div > .status, .edu_name, .edu_content_name{
+    display: block;
+}
+.edu{
+    padding: 1vw;
+    border-bottom: 0.1rem dotted lightgray;
+    border-radius: 10px;
+}
+.status{
+    color: #d25726;
+    display: inline-block;
+    margin-bottom: 1vh;
+}
+.edu_name{
+    /*font-style: italic;*/
+}
+.edu_content_name{
+    font-size: 1rem;
+    font-weight: bold;
+    padding-bottom: 0.5vh;
+}
+.start-date{
+    margin-right: 2vw;
+}
+.class{
+    margin-right: 1vw;
+}
+
+
+/* right-col */
+.right-col{
+    padding: 1.5vw;
+}
+.right-col > div {
+    font-weight: bold;
+}
+
 
 @media all and (min-width:768px) and (max-width:1023px) {
 

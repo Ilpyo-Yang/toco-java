@@ -52,8 +52,17 @@ public class ProgressService {
     progress.setStatus(status);
   }
 
-  public List<ProgressDto> findByMemberUuid(String memberUuid) {
-    return progressRepository.findByMemberUuid(memberUuid);
+  public List<ProgressDto> findByMemberUuidToDto(String memberUuid) {
+    return progressRepository.findByMemberUuidToDto(memberUuid);
+  }
+
+  public int getNotStartCnt(List<ProgressDto> progressDtoList) {
+    if(progressDtoList==null) return 0;
+    return progressDtoList
+        .stream()
+        .filter(dto -> dto.getStatus().equals(Status.NotStarted))
+        .collect(Collectors.toList())
+        .size();
   }
 
   public int getProgressCnt(List<ProgressDto> progressDtoList) {
@@ -70,6 +79,15 @@ public class ProgressService {
     return progressDtoList
         .stream()
         .filter(dto -> dto.getStatus().equals(Status.Finished))
+        .collect(Collectors.toList())
+        .size();
+  }
+
+  public int getStoppedCnt(List<ProgressDto> progressDtoList) {
+    if(progressDtoList==null) return 0;
+    return progressDtoList
+        .stream()
+        .filter(dto -> dto.getStatus().equals(Status.Stopped))
         .collect(Collectors.toList())
         .size();
   }

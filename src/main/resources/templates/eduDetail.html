@@ -41,20 +41,20 @@
 
             <div class="col-4">
                 <span class="bold form">수업 시작하기</span>
-                <form id="form" th:action="@{/applyEdu}" th:method="post" th:object="${registerForm}" sec:authorize="isAuthenticated()">
+                <form id="form" th:action="@{edu/apply}" th:method="post" th:object="${registerForm}" sec:authorize="isAuthenticated()">
                     <label for="email" class="col-form-label">이메일</label>
                     <input type="email" class="form-control-plaintext" id="email" th:name="email" th:value="${email}" readonly />
                     <label for="date" class="col-form-label">수강 시작일</label>
                     <input type="date" class="form-control-plaintext" id="date" th:field="*{date}" />
                     <label class="col-form-label">메일 수신일</label>
                     <div>
-                        <span class="days" value="sun">S</span>
-                        <span class="days" value="mon">M</span>
-                        <span class="days" value="tue">T</span>
-                        <span class="days" value="wed">W</span>
-                        <span class="days" value="thu">T</span>
-                        <span class="days" value="fri">F</span>
-                        <span class="days" value="sat">S</span>
+                        <span class="days" value="SUN">S</span>
+                        <span class="days" value="MON">M</span>
+                        <span class="days" value="TUE">T</span>
+                        <span class="days" value="WED">W</span>
+                        <span class="days" value="THU">T</span>
+                        <span class="days" value="FRI">F</span>
+                        <span class="days" value="SAT">S</span>
                     </div>
                     <input type="hidden" class="form-control-plaintext" th:field="*{days}" />
                     <input type="hidden" class="form-control-plaintext" th:name="education_uuid" th:value="${uuid}" />

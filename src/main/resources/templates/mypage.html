@@ -22,23 +22,38 @@
         </div>
 
         <div class="row">
-            <div class="col-3">
+            <div class="left-col col-3">
                 <img th:src="@{${'/image/profile/'+profile}}" class="profile"/>
                 <div>
                     <span class="name" th:text="${name}"></span>
+                    <br>
+                    <span class="static static_content">시작하지 않은 과정</span>
+                    <span class="static static_value" th:text="${notStartCnt}"></span>
                     <br>
                     <span class="static static_content">수강중인 과정</span>
                     <span class="static static_value" th:text="${progressCnt}"></span>
                     <br>
                     <span class="static static_content">완료한 과정</span>
                     <span class="static static_value" th:text="${finishedCnt}"></span>
+                    <br>
+                    <span class="static static_content">수강 중지한 과정</span>
+                    <span class="static static_value" th:text="${stoppedCnt}"></span>
                 </div>
             </div>
 
-            <div class="col-9">
-                <div>
-                    수업을 신청하려면
+            <div class="middle-col col-6">
+                <div th:each="dto:${progressDtoList}" th:id="${dto.getUuid()}" class="edu">
+                    <span class="status" th:text="${dto.getStatus().getName()}"></span>
+                    <span class="edu_name" th:text="${dto.getEducationName()}"></span>
+                    <span class="edu_content_name" th:text="${dto.getEducationContentName()}"></span>
+                    <span class="class">수강시작일</span><span class="start-date" th:text="${dto.startDate}"></span>
+                    <span class="class">수강시작일</span><span class="mailing-days" th:text="${dto.mailingDays}"></span>
                 </div>
+            </div>
+
+            <div class="right-col col-3">
+                <div>Recommended</div>
+                <span>이런 강의들은 어떠신가요?</span>
             </div>
         </div>
 

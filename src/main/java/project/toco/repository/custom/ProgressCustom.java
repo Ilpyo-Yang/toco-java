@@ -4,5 +4,5 @@ import java.util.List;
 import project.toco.dto.ProgressDto;
 
 public interface ProgressCustom {
-  List<ProgressDto> findByMemberUuid(String memberUuid);
+  List<ProgressDto> findByMemberUuidToDto(String memberUuid);
 }

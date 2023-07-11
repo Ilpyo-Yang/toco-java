@@ -1,9 +1,10 @@
 package project.toco.dto;
 
-import java.time.LocalDateTime;
+import java.time.LocalDate;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import project.toco.entity.EducationContent;
 import project.toco.entity.Status;
 
 @Getter
@@ -12,10 +13,11 @@ import project.toco.entity.Status;
 public class ProgressDto {
   private String uuid;
   private Status status;
-  private String member_uuid;
-  private String education_content_uuid;
-  private String createdBy;
-  private String lastModifiedBy;
-  private LocalDateTime createdDate;
-  private LocalDateTime lastModifiedDate;
+  private String memberUuid;
+  private String educationContentUuid;
+  private String educationContentName;
+  private String educationUuid;
+  private String educationName;
+  private LocalDate startDate;
+  private String mailingDays;
 }

@@ -23,9 +23,11 @@ public class MypageController {
 
     @GetMapping
     public String myPage(Model model, @AuthenticationPrincipal LoginUser user){
-        List<ProgressDto> progressDtoList = progressService.findByMemberUuid(user.getUuid());
+        List<ProgressDto> progressDtoList = progressService.findByMemberUuidToDto(user.getUuid());
+        model.addAttribute("notStartCnt", progressService.getNotStartCnt(progressDtoList));
         model.addAttribute("progressCnt", progressService.getProgressCnt(progressDtoList));
         model.addAttribute("finishedCnt", progressService.getFinishedCnt(progressDtoList));
+        model.addAttribute("stoppedCnt", progressService.getStoppedCnt(progressDtoList));
         model.addAttribute("progressDtoList", progressDtoList);
         model.addAttribute("profile", getRandomFileName("src/main/resources/static/image/profile"));
         if(user!=null){
