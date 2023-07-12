@@ -1,6 +1,7 @@
 # toco! 개발자를 위한 메일링 학습 서비스
 
 <br><br>
+
 <p style="text-align:center">
     <img style="width:150px" src="src/main/resources/static/image/toco-orange.png" />
 </p>
@@ -25,15 +26,16 @@
 
 ## 프로젝트 설계
 ### ERD
+
 <p style="text-align:center">
-    <img style="width:60%" src="src/main/resources/static/image/readme/toco_erd.png" />
+    <img style="width:60%" src="readme/toco_erd.png" />
 </p>
 
 ### 프로젝트 뷰
-| 메인페이지                                                 | 로그인 & 회원가입 페이지                                    | 마이페이지                                                 |
-|----------------------------------------------------------|---------------------------------------------------------|----------------------------------------------------------|
-| ![](src/main/resources/static/image/readme/image 11.png) | ![](src/main/resources/static/image/readme/image 9.png) | ![](src/main/resources/static/image/readme/Group 37.png) |
+| 메인페이지         | 로그인 & 회원가입 페이지    | 마이페이지                      |
+|------------------|-------------------|----------------------------|
+| ![img](readme/image11.png) | ![img](readme/image9.png) | ![img](readme/Group37.png) |
 
-| 서비스 리스트 페이지                                        | 서비스 상세 페이지                                               | 서비스 소개 페이지                                          |
-|---------------------------------------------------------|----------------------------------------------------------|----------------------------------------------------------|
-| ![](src/main/resources/static/image/readme/image 8.png) | ![](src/main/resources/static/image/readme/image 15.png) | ![](src/main/resources/static/image/readme/image 14.png) |
+| 서비스 리스트 페이지      | 서비스 상세 페이지       | 서비스 소개 페이지      |
+|-----------------------|-----------------------|----------------------|
+| ![img](readme/image8.png) | ![img](readme/image15.png) | ![img](readme/image14.png) |
