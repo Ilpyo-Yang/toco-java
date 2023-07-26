@@ -1,16 +1,22 @@
+# Jasypt Config
+jasypt:
+    encryptor:
+        bean: jasyptEncryptor
+        password : jasypt
+
 spring:
     datasource:
         driver-class-name: com.mysql.cj.jdbc.Driver
-        url: jdbc:mysql://localhost:3306/today_coding?
-        username: root
-        password: 1234abcd!
+        url: ENC(fxZWbZrQVJ2M0Lu3dD4SPAHVPtAESrtyEPsQvnyMRjB1AlBQ4f/Y84IN0E0mV3xbYDxMaM7essE=)
+        username: ENC(ht2MlxVPcmNxG4KsuXI0zQ==)
+        password: ENC(esd5Cn4+oi13KBCzy96fag8Q3XQII9L2)
         column:
             encrypt:
-                    key: VlwEyVBsYt9V7zq57TejMnVUyzblYcfP
+                    key: ENC(vSpSQWvDSsZn/3yVCbkE51/NMgE/iB2FLVbYoiSvgdgPYPiNNXMcprpH5FXYWC0+)
 
     jpa:
         hibernate:
-            ddl-auto: update
+            ddl-auto: create
 
     thymeleaf:
         encoding: UTF-8
@@ -33,6 +39,6 @@ spring:
 
 jwt:
     header: Authorization
-    secret: VlwEyVBsYt9V7zq57TejMnVUyzblYcfPQye08f7MGVA9XkHa
+    secret: ENC(6W9FeN7Ec2gV813Og8eJJ3pXxs4OrJvl/YU6W8r/HwGZ1xtPxpnfFzBc9qyDdd6o62gdbWYLgKlbFvDdTZCHrQ==)
     tokenValidTime: 86400
 
