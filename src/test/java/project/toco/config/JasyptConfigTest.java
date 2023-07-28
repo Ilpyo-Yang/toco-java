@@ -13,6 +13,7 @@ public class JasyptConfigTest {
   public void stringEncryptorTest(){
     String test = "stringEncryptorTest";
     String encrypt_test = stringEncryptor.encrypt(test);
+    //System.out.println(stringEncryptor.encrypt(""));
     assert test.equals(stringEncryptor.decrypt(encrypt_test));
   }
 }
