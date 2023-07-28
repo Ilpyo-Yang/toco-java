@@ -26,11 +26,11 @@ public class MailingLog {
   @CreatedDate
   private LocalDateTime sentDate;
 
-  public static MailingLog createMember(String member_uuid, String history){
+  public static MailingLog createMailingLog(String member_uuid, String history){
     MailingLog mailingLog = new MailingLog();
     mailingLog.setReceiver(member_uuid);
     mailingLog.setHistory(history);
-    //mailingLog.setSentDate(LocalDateTime.now());
+    mailingLog.setSentDate(LocalDateTime.now());
     return mailingLog;
   }
 }

@@ -9,6 +9,7 @@ import java.util.List;
 import lombok.RequiredArgsConstructor;
 import project.toco.dto.EducationContentDto;
 import project.toco.entity.Education;
+import project.toco.entity.EducationContent;
 import project.toco.repository.custom.EducationContentCustom;
 
 @RequiredArgsConstructor
@@ -16,10 +17,9 @@ public class EducationContentRepositoryImpl implements EducationContentCustom {
   private final JPAQueryFactory jpaQueryFactory;
 
   @Override
-  public String getNextUuid(int nextChapter, Education education) {
+  public EducationContent getNextUuid(int nextChapter, Education education) {
     return jpaQueryFactory
-        .select(educationContent.uuid)
-        .from(educationContent)
+        .selectFrom(educationContent)
         .where(chapterEq(nextChapter),educationEq(education))
         .fetchOne();
   }

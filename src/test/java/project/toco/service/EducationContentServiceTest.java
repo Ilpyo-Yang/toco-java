@@ -22,10 +22,9 @@ public class EducationContentServiceTest {
   @Test
   public void getNextUuid(){
     String uuid = educationContentRepository.findAll().get(0).getUuid();
-    EducationContent current = educationContentRepository.findById(uuid).get();
-    String nextUuid = educationContentRepository.getNextUuid(current.getChapter()+1, current.getEducation());
-    EducationContent nextOne = educationContentRepository.findById(nextUuid).get();
-    assert current.getChapter()+1 == nextOne.getChapter();
+    EducationContent currentContent = educationContentRepository.findById(uuid).get();
+    EducationContent nextContent = educationContentRepository.getNextUuid(currentContent.getChapter()+1, currentContent.getEducation());
+    assert currentContent.getChapter()+1 == nextContent.getChapter();
   }
 
   @Test
@@ -35,5 +34,4 @@ public class EducationContentServiceTest {
     List<EducationContentDto> list = educationContentRepository.findAllToDto(education);
     assert list.size() == educationContentRepository.findAllByEducationUuid(education_uuid).size();
   }
-
 }

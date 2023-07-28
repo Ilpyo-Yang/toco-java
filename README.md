@@ -28,14 +28,14 @@
 ### ERD
 
 <p style="text-align:center">
-    <img style="width:60%" src="readme/toco_erd.png" />
+    <img style="width:60%" src="readme_img/toco_erd.png" />
 </p>
 
 ### 프로젝트 뷰
 | 메인페이지         | 로그인 & 회원가입 페이지    | 마이페이지                      |
 |------------------|-------------------|----------------------------|
-| ![img](readme/image11.png) | ![img](readme/image9.png) | ![img](readme/Group37.png) |
+| ![img](readme_img/image11.png) | ![img](readme_img/image9.png) | ![img](readme_img/Group37.png) |
 
 | 서비스 리스트 페이지      | 서비스 상세 페이지       | 서비스 소개 페이지      |
 |-----------------------|-----------------------|----------------------|
-| ![img](readme/image8.png) | ![img](readme/image15.png) | ![img](readme/image14.png) |
+| ![img](readme_img/image8.png) | ![img](readme_img/image15.png) | ![img](readme_img/image14.png) |

@@ -16,7 +16,7 @@ spring:
 
     jpa:
         hibernate:
-            ddl-auto: create
+            ddl-auto: update
 
     thymeleaf:
         encoding: UTF-8
@@ -37,8 +37,21 @@ spring:
         thymeleaf:
             cache: false
 
+    mail:
+        host: smtp.gmail.com
+        port: 587
+        username: todaycoding1015@gmail.com
+        password: ENC(W6ZJEI7h3P4Up0PUBsw7ej8xwWnPdFXv//N2KERc2tM=)
+        properties:
+          mail:
+              smtp:
+                  auth: true
+                  starttls:
+                      enable: true
+
 jwt:
     header: Authorization
     secret: ENC(6W9FeN7Ec2gV813Og8eJJ3pXxs4OrJvl/YU6W8r/HwGZ1xtPxpnfFzBc9qyDdd6o62gdbWYLgKlbFvDdTZCHrQ==)
     tokenValidTime: 86400
+
 

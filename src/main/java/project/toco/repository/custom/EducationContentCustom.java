@@ -3,8 +3,9 @@ package project.toco.repository.custom;
 import java.util.List;
 import project.toco.dto.EducationContentDto;
 import project.toco.entity.Education;
+import project.toco.entity.EducationContent;
 
 public interface EducationContentCustom {
-  String getNextUuid(int nextChapter, Education education);
+  EducationContent getNextUuid(int nextChapter, Education education);
   List<EducationContentDto> findAllToDto(Education education);
 }

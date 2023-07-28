@@ -18,7 +18,7 @@ public class EducationContentService {
   private final EducationRepository educationRepository;
   private final EducationContentRepository educationContentRepository;
 
-  public String getNextUuid(String uuid) {
+  public EducationContent getNextContent(String uuid) {
     EducationContent educationContent = educationContentRepository.findById(uuid).get();
     int nextChapter = educationContent.getChapter()+1;
     Education education = educationContent.getEducation();
